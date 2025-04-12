@@ -1,28 +1,28 @@
-import fs from "fs";
-import path from "path";
-import dotenv from "dotenv";
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
 
 export function isProdEnv(): boolean {
-	return import.meta.env.PROD;
+  return import.meta.env.PROD;
 }
 
 export function isDevEnv(): boolean {
-	return import.meta.env.DEV;
+  return import.meta.env.DEV;
 }
 
 export function isDevFn(mode: string): boolean {
-	return mode === "development";
+  return mode === 'development';
 }
 
 export function isProdFn(mode: string): boolean {
-	return mode === "production";
+  return mode === 'production';
 }
 
 /**
  * Whether to generate package preview
  */
 export function isReportMode(): boolean {
-	return process.env.VITE_REPORT === "true";
+  return process.env.VITE_REPORT === 'true';
 }
 
 /**
@@ -30,24 +30,24 @@ export function isReportMode(): boolean {
  * @param envConf
  * */
 export function wrapperEnv(envConf: Recordable): ViteEnv {
-	const ret: any = {};
+  const ret: any = {};
 
-	for (const envName of Object.keys(envConf)) {
-		let realName = envConf[envName].replace(/\\n/g, "\n");
-		realName = realName === "true" ? true : realName === "false" ? false : realName;
+  for (const envName of Object.keys(envConf)) {
+    let realName = envConf[envName].replace(/\\n/g, '\n');
+    realName = realName === 'true' ? true : realName === 'false' ? false : realName;
 
-		if (envName === "VITE_PORT") {
-			realName = Number(realName);
-		}
-		if (envName === "VITE_PROXY") {
-			try {
-				realName = JSON.parse(realName);
-			} catch (error) {}
-		}
-		ret[envName] = realName;
-		process.env[envName] = realName;
-	}
-	return ret;
+    if (envName === 'VITE_PORT') {
+      realName = Number(realName);
+    }
+    if (envName === 'VITE_PROXY') {
+      try {
+        realName = JSON.parse(realName);
+      } catch (error) {}
+    }
+    ret[envName] = realName;
+    process.env[envName] = realName;
+  }
+  return ret;
 }
 
 /**
@@ -55,24 +55,24 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
  * @param match prefix
  * @param confFiles ext
  */
-export function getEnvConfig(match = "VITE_GLOB_", confFiles = [".env", ".env.production"]) {
-	let envConfig = {};
-	confFiles.forEach(item => {
-		try {
-			const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), item)));
-			envConfig = { ...envConfig, ...env };
-		} catch (error) {
-			console.error(`Error in parsing ${item}`, error);
-		}
-	});
+export function getEnvConfig(match = 'VITE_GLOB_', confFiles = ['.env', '.env.production']) {
+  let envConfig = {};
+  confFiles.forEach(item => {
+    try {
+      const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), item)));
+      envConfig = { ...envConfig, ...env };
+    } catch (error) {
+      console.error(`Error in parsing ${item}`, error);
+    }
+  });
 
-	Object.keys(envConfig).forEach(key => {
-		const reg = new RegExp(`^(${match})`);
-		if (!reg.test(key)) {
-			Reflect.deleteProperty(envConfig, key);
-		}
-	});
-	return envConfig;
+  Object.keys(envConfig).forEach(key => {
+    const reg = new RegExp(`^(${match})`);
+    if (!reg.test(key)) {
+      Reflect.deleteProperty(envConfig, key);
+    }
+  });
+  return envConfig;
 }
 
 /**
@@ -80,5 +80,5 @@ export function getEnvConfig(match = "VITE_GLOB_", confFiles = [".env", ".env.pr
  * @param dir file path
  */
 export function getRootPath(...dir: string[]) {
-	return path.resolve(process.cwd(), ...dir);
+  return path.resolve(process.cwd(), ...dir);
 }

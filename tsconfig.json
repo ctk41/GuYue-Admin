@@ -20,24 +20,35 @@
     "esModuleInterop": true,
     // 忽略所有的声明文件（ *.d.ts）的类型检查，跳过第三方库检查，解决打包失败
     "skipLibCheck": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     // 解析非相对模块的基地址，默认是当前目录
-		"baseUrl": "./",
-		// 模块名到基于 baseUrl 的路径映射的列表
-		"paths": {
-			"@": ["src"],
-			"@/*": ["src/*"]
-		},
+    "baseUrl": "./",
+    // 模块名到基于 baseUrl 的路径映射的列表
+    "paths": {
+      "@": [
+        "src"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
     "noEmit": true
   },
   "include": [
-    "src/**/*.ts", 
-    "src/**/*.d.ts", 
-    "src/**/*.tsx", 
-    "src/**/*.vue", 
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
     "build/**/*.ts",
     "build/**/*.d.ts",
     "vite.config.ts"
   ],
-	"exclude": ["node_modules", "dist", "**/*.js"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ]
 }

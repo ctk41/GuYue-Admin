@@ -1,0 +1,233 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.rulers": [
+    120
+  ],
+  "editor.wordWrap": "on",
+  "editor.suggestSelection": "first",
+  "editor.inlineSuggest.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.git": true
+  },
+  // JavaScript & TypeScript settings
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.format.semicolons": "insert",
+  "typescript.format.semicolons": "insert",
+  // ESLint Settings
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.run": "onSave",
+  "eslint.workingDirectories": [
+    {
+      "directory": "./",
+      "changeProcessCWD": true
+    }
+  ],
+  // Stylelint Settings
+  "stylelint.validate": [
+    "css",
+    "less",
+    "scss",
+    "postcss",
+    "typescriptreact",
+    "javascriptreact"
+  ],
+  "stylelint.enable": true,
+  // Prettier Settings
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 120,
+  "prettier.tabWidth": 2,
+  "prettier.bracketSameLine": false,
+  "prettier.vueIndentScriptAndStyle": true,
+  // Vue specific settings
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.validation.template": true,
+  "vetur.validation.script": true,
+  "vetur.validation.style": true,
+  "vetur.experimental.templateInterpolationService": true,
+  "volar.autoCompleteRefs": true,
+  "volar.codeLens.references": true,
+  "volar.codeLens.pugTools": true,
+  "volar.completion.autoImportComponent": true,
+  // React specific settings
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "vue-html": "html"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "typescript": "tsx"
+  },
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.triggerExpansionOnTab": true,
+  // File associations
+  "files.associations": {
+    "*.vue": "vue",
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact",
+    "*.json": "json",
+    "*.js": "javascript",
+    "*.ts": "typescript",
+    "*.css": "css",
+    "*.scss": "scss",
+    "*.sass": "sass",
+    "*.less": "less",
+    "*.styl": "stylus",
+    "*.html": "html",
+    "*.md": "markdown",
+    "*.svg": "svg",
+    "*.uiflow": "uiflow",
+    "*.*lintrc": "json",
+    "Schemafile": "ruby",
+    "zshrc": "shellscript",
+    "settings.json": "jsonc",
+    "*.html.erb": "erb",
+    "*plays.yml": "ansible",
+    "*init.yml": "yaml",
+    "*.env*": "dotenv",
+    "*.conf": "nginx",
+    "*.nginx.conf": "nginx",
+    "*.apache.conf": "apache",
+    "*.redux.js": "javascriptreact",
+    ".env.*": "dotenv"
+  },
+  // Path intellisense
+  "path-intellisense.mappings": {
+    "@": "${workspaceFolder}/src"
+  },
+  // Terminal settings
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.gpuAcceleration": "auto",
+  // Git settings
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.suggestSmartCommit": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  // Markdownlint settings
+  "markdownlint.config": {
+    "MD024": false,
+    "MD025": false,
+    "MD041": false
+  },
+  // Misc settings
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+  // Word configuration
+  "cSpell.userWords": [
+    "Antd",
+    "ahooks",
+    "anticon",
+    "Cascader",
+    "cmnfooter",
+    "commitlint",
+    "countup",
+    "domexception",
+    "ekyc",
+    "esbenp",
+    "eslintcache",
+    "Interactor",
+    "languagedetector",
+    "lintrc",
+    "logicflow",
+    "mypage",
+    "noopener",
+    "noreferrer",
+    "persistor",
+    "Popconfirm",
+    "PoweroffOutlined",
+    "renosy",
+    "Sider",
+    "stylelint",
+    "sumai",
+    "swiper",
+    "uiflow",
+    "Vetur",
+    "vite",
+    "Volar",
+    "vueuse",
+    "vuex",
+    "vuedraggable",
+    "vuelidate"
+  ],
+  "[nginx.conf]": {
+    "editor.defaultFormatter": null
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "i18n-ally.localesPaths": [
+    "src/locales"
+  ]
+}

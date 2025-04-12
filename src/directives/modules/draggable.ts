@@ -10,57 +10,57 @@
 	使用：在 Dom 上加上 v-draggable 即可
 	<div class="dialog-model" v-draggable></div>
 */
-import type { Directive } from "vue";
+import type { Directive } from 'vue';
 interface ELType extends HTMLElement {
-	parentNode: any;
+  parentNode: any;
 }
 
 const draggable: Directive = {
-	mounted(el: ELType) {
-		// 将光标设置为“move”，将位置设置为“absolute”
-		el.style.cursor = "move";
-		el.style.position = "absolute";
-		// 当元素被点击时
-		el.onmousedown = function (e) {
-			// 计算鼠标点击位置与元素左上角之间的距离
-			let disX = e.pageX - el.offsetLeft;
-			let disY = e.pageY - el.offsetTop;
+  mounted(el: ELType) {
+    // 将光标设置为“move”，将位置设置为“absolute”
+    el.style.cursor = 'move';
+    el.style.position = 'absolute';
+    // 当元素被点击时
+    el.onmousedown = function (e) {
+      // 计算鼠标点击位置与元素左上角之间的距离
+      let disX = e.pageX - el.offsetLeft;
+      let disY = e.pageY - el.offsetTop;
 
-			// 当鼠标移动时
-			document.onmousemove = function (e) {
-				// 计算元素的新位置
-				let x = e.pageX - disX;
-				let y = e.pageY - disY;
+      // 当鼠标移动时
+      document.onmousemove = function (e) {
+        // 计算元素的新位置
+        let x = e.pageX - disX;
+        let y = e.pageY - disY;
 
-				// 计算元素可以移动到的最大位置
-				let maxX = el.parentNode.offsetWidth - el.offsetWidth;
-				let maxY = el.parentNode.offsetHeight - el.offsetHeight;
+        // 计算元素可以移动到的最大位置
+        let maxX = el.parentNode.offsetWidth - el.offsetWidth;
+        let maxY = el.parentNode.offsetHeight - el.offsetHeight;
 
-				// 确保元素不会超出其父元素的边界
-				if (x < 0) {
-					x = 0;
-				} else if (x > maxX) {
-					x = maxX;
-				}
+        // 确保元素不会超出其父元素的边界
+        if (x < 0) {
+          x = 0;
+        } else if (x > maxX) {
+          x = maxX;
+        }
 
-				if (y < 0) {
-					y = 0;
-				} else if (y > maxY) {
-					y = maxY;
-				}
+        if (y < 0) {
+          y = 0;
+        } else if (y > maxY) {
+          y = maxY;
+        }
 
-				// 设置元素的新位置
-				el.style.left = x + "px";
-				el.style.top = y + "px";
-			};
+        // 设置元素的新位置
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+      };
 
-			// 当鼠标释放时
-			document.onmouseup = function () {
-				// 停止跟踪鼠标移动
-				document.onmousemove = document.onmouseup = null;
-			};
-		};
-	}
+      // 当鼠标释放时
+      document.onmouseup = function () {
+        // 停止跟踪鼠标移动
+        document.onmousemove = document.onmouseup = null;
+      };
+    };
+  },
 };
 
 export default draggable;
