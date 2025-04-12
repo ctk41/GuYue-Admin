@@ -2,7 +2,7 @@ import { MockMethod } from 'vite-plugin-mock';
 
 export default [
   {
-    url: '/api/guyue/auth/buttons',
+    url: '/api/auth/buttons',
     method: 'get',
     response: () => {
       return {
@@ -16,7 +16,7 @@ export default [
     },
   },
   {
-    url: '/api/guyue/login',
+    url: '/api/login',
     method: 'post',
     response: () => {
       return {
@@ -29,7 +29,7 @@ export default [
     },
   },
   {
-    url: '/api/guyue/logout',
+    url: '/api/logout',
     method: 'post',
     response: () => {
       return {

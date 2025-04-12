@@ -9,10 +9,10 @@ export namespace Menu {
       title: string;
       activeMenu?: string;
       isLink?: string;
-      isHide: boolean;
-      isFull: boolean;
-      isAffix: boolean;
-      isKeepAlive: boolean;
+      isHide?: boolean;
+      isFull?: boolean;
+      isAffix?: boolean;
+      isKeepAlive?: boolean;
     };
     children?: MenuOptions[];
   }

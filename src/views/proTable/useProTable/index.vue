@@ -115,7 +115,6 @@
   import GRoleSelect from '@/components/GSelect/GRoleSelect.vue';
   import { useDownload } from '@/hooks/useDownload';
   import { useHandleData } from '@/hooks/useHandleData';
-  import { useAuthButtons } from '@/hooks/useAuthButtons';
   import { Modal, message } from 'ant-design-vue';
   import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
   import {
@@ -146,7 +145,6 @@
     newParams['rolename'] = rolenameValue.value;
     return getUserList(newParams);
   };
-  const { BUTTONS } = useAuthButtons();
   const columns = ref<TableColumnsType>([
     {
       title: '#',

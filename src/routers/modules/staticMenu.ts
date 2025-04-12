@@ -8,11 +8,6 @@ export const staticMenu: Menu.MenuOptions[] = [
     meta: {
       icon: 'HomeFilled',
       title: 'Workplace',
-      isLink: '',
-      isHide: false,
-      isFull: false,
-      isAffix: true,
-      isKeepAlive: true,
     },
   },
   {
@@ -22,11 +17,6 @@ export const staticMenu: Menu.MenuOptions[] = [
     meta: {
       icon: 'TableOutlined',
       title: 'Super Table',
-      isLink: '',
-      isHide: false,
-      isFull: false,
-      isAffix: false,
-      isKeepAlive: true,
     },
     children: [
       {
@@ -36,11 +26,6 @@ export const staticMenu: Menu.MenuOptions[] = [
         meta: {
           icon: 'InsertRowAboveOutlined',
           title: 'Simple Table',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
         },
         children: [
           {
@@ -51,11 +36,6 @@ export const staticMenu: Menu.MenuOptions[] = [
               icon: 'FileTextOutlined',
               title: 'User Details',
               activeMenu: '/proTable/useProTable',
-              isLink: '',
-              isHide: true,
-              isFull: false,
-              isAffix: false,
-              isKeepAlive: true,
             },
           },
         ],
@@ -69,11 +49,6 @@ export const staticMenu: Menu.MenuOptions[] = [
     meta: {
       icon: 'DashboardOutlined',
       title: 'Dashboard',
-      isLink: '',
-      isHide: false,
-      isFull: false,
-      isAffix: false,
-      isKeepAlive: true,
     },
     children: [
       {
@@ -83,11 +58,6 @@ export const staticMenu: Menu.MenuOptions[] = [
         meta: {
           icon: 'FundViewOutlined',
           title: 'Control Panel',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
         },
       },
       {
@@ -97,11 +67,6 @@ export const staticMenu: Menu.MenuOptions[] = [
         meta: {
           icon: 'chromeOutlined',
           title: 'Embedded Pages',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
         },
       },
     ],
@@ -113,11 +78,6 @@ export const staticMenu: Menu.MenuOptions[] = [
     meta: {
       icon: 'FileTextOutlined',
       title: 'Forms',
-      isLink: '',
-      isHide: false,
-      isFull: false,
-      isAffix: false,
-      isKeepAlive: true,
     },
     children: [
       {
@@ -127,11 +87,6 @@ export const staticMenu: Menu.MenuOptions[] = [
         meta: {
           icon: 'ProfileOutlined',
           title: 'Basic Form',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
         },
       },
       {
@@ -141,11 +96,6 @@ export const staticMenu: Menu.MenuOptions[] = [
         meta: {
           icon: 'FileAddOutlined',
           title: 'Dynamic Form',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
         },
       },
       {
@@ -155,11 +105,6 @@ export const staticMenu: Menu.MenuOptions[] = [
         meta: {
           icon: 'BarsOutlined',
           title: 'Step Form',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
         },
       },
     ],
@@ -171,11 +116,6 @@ export const staticMenu: Menu.MenuOptions[] = [
     meta: {
       icon: 'ProjectOutlined',
       title: 'About Project',
-      isLink: '',
-      isHide: false,
-      isFull: false,
-      isAffix: false,
-      isKeepAlive: true,
     },
   },
 ];

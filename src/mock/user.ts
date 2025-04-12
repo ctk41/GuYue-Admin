@@ -2,7 +2,7 @@ import { MockMethod } from 'vite-plugin-mock';
 
 export default [
   {
-    url: '/api/guyue/login',
+    url: '/api/login',
     method: 'post',
     response: () => {
       return {
@@ -15,7 +15,7 @@ export default [
     },
   },
   {
-    url: '/api/guyue/user/list',
+    url: '/api/user/list',
     method: 'get',
     response: () => {
       return {

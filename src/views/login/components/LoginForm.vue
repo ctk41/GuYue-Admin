@@ -16,17 +16,17 @@
     </a-form-item>
   </a-form>
   <div class="login-btn">
-    <a-button shape="round" size="large" class="login-button" @click="resetForm(loginFormRef)">
-      <template #icon>
-        <close-circle-outlined />
-      </template>
-      {{ $t('login.reset') }}
-    </a-button>
     <a-button shape="round" size="large" type="primary" class="login-button" @click="login(loginFormRef)">
       <template #icon>
         <user-outlined />
       </template>
       {{ $t('login.register') }}
+    </a-button>
+    <a-button shape="round" size="large" class="login-button" @click="resetForm(loginFormRef)">
+      <template #icon>
+        <close-circle-outlined />
+      </template>
+      {{ $t('login.reset') }}
     </a-button>
   </div>
 </template>

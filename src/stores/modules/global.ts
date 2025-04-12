@@ -4,7 +4,7 @@ import { DEFAULT_PRIMARY } from '@/config';
 import piniaPersistConfig from '@/config/piniaPersist';
 
 export const useGlobalStore = defineStore({
-  id: 'guyue-global',
+  id: 'app-global',
   state: (): GlobalState => ({
     refreshPage: true,
     routeName: '',
@@ -30,5 +30,5 @@ export const useGlobalStore = defineStore({
       this.$patch({ [key]: val });
     },
   },
-  persist: piniaPersistConfig('guyue-global'),
+  persist: piniaPersistConfig('app-global'),
 });

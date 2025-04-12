@@ -16,7 +16,6 @@
   import { useTheme } from '@/hooks/useTheme';
   import dayjs from 'dayjs';
   import 'dayjs/locale/zh-cn';
-  import Empty from '@/components/Empty/index.vue';
 
   const { initTheme } = useTheme();
   initTheme();

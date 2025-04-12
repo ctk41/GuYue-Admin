@@ -384,7 +384,7 @@ export const transformMenuToRoutes = (menuList: Menu.MenuOptions[]): RouteRecord
         isHide: item.meta.isHide,
         isFull: item.meta.isFull,
         isAffix: item.meta.isAffix,
-        isKeepAlive: item.meta.isKeepAlive,
+        isKeepAlive: item.meta.isKeepAlive || true,
       },
     } as RouteRecordRaw;
 

@@ -6,7 +6,7 @@ import { staticMenu } from '@/routers/modules/staticMenu';
 
 // useAuthStore
 export const useAuthStore = defineStore({
-  id: 'guyue-auth',
+  id: 'app-auth',
   state: (): AuthState => ({
     routeName: '',
     authButtonList: {},
