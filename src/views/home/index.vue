@@ -44,7 +44,7 @@
   </a-card>
   <a-row :gutter="6">
     <a-col :span="12">
-      <a-card title="Engineering Projects1234" class="mb-6">
+      <a-card title="Engineering Projects" class="mb-6">
         <template #extra><a href="https://gitee.com/Y_lao/VTI CORP" target="_blank">More Projects</a></template>
         <a-card-grid v-for="item in projectData" :key="item.title">
           <div class="flex flex-row">

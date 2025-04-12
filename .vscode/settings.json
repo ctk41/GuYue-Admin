@@ -235,5 +235,6 @@
   },
   "i18n-ally.localesPaths": [
     "src/locales"
-  ]
+  ],
+  "vue-i18n.i18nPaths": ""
 }

@@ -116,8 +116,15 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
           assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+          manualChunks: {
+            'vue-vendor': ['vue', 'vue-router', 'pinia', 'vue-i18n'],
+            'ant-design-vue': ['ant-design-vue', '@ant-design/icons-vue'],
+          },
         },
       },
+    },
+    optimizeDeps: {
+      include: ['vue', 'vue-router', 'pinia', 'vue-i18n', 'ant-design-vue', '@ant-design/icons-vue'],
     },
   };
 });
