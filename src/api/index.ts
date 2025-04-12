@@ -14,7 +14,7 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 }
 
 const config = {
-  baseURL: import.meta.env.VITE_API_URL as string,
+  baseURL: import.meta.env.VITE_API_BACKEND_URL as string,
   timeout: ResultEnum.TIMEOUT as number,
   withCredentials: true,
 };

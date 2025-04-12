@@ -11,35 +11,35 @@
               <div class="message-item">
                 <img src="@/assets/images/msg01.png" alt="" class="message-icon" />
                 <div class="message-content">
-                  <span class="message-title">一键三连 GuYue-Admin 🧡</span>
+                  <span class="message-title">一键三连 VTI CORP 🧡</span>
                   <span class="message-date">一分钟前</span>
                 </div>
               </div>
               <div class="message-item">
                 <img src="@/assets/images/msg02.png" alt="" class="message-icon" />
                 <div class="message-content">
-                  <span class="message-title">一键三连 GuYue-Admin 💙</span>
+                  <span class="message-title">一键三连 VTI CORP 💙</span>
                   <span class="message-date">一小时前</span>
                 </div>
               </div>
               <div class="message-item">
                 <img src="@/assets/images/msg03.png" alt="" class="message-icon" />
                 <div class="message-content">
-                  <span class="message-title">一键三连 GuYue-Admin 💚</span>
+                  <span class="message-title">一键三连 VTI CORP 💚</span>
                   <span class="message-date">半天前</span>
                 </div>
               </div>
               <div class="message-item">
                 <img src="@/assets/images/msg04.png" alt="" class="message-icon" />
                 <div class="message-content">
-                  <span class="message-title">一键三连 GuYue-Admin 💜</span>
+                  <span class="message-title">一键三连 VTI CORP 💜</span>
                   <span class="message-date">一星期前</span>
                 </div>
               </div>
               <div class="message-item">
                 <img src="@/assets/images/msg05.png" alt="" class="message-icon" />
                 <div class="message-content">
-                  <span class="message-title">一键三连 GuYue-Admin 💛</span>
+                  <span class="message-title">一键三连 VTI CORP 💛</span>
                   <span class="message-date">一个月前</span>
                 </div>
               </div>
@@ -64,49 +64,49 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-const activeKey = ref('inform');
+  const activeKey = ref('inform');
 </script>
 
 <style scoped lang="less">
-.message-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 284px;
-  height: 260px;
-  line-height: 45px;
-}
-.message-list {
-  display: flex;
-  flex-direction: column;
-  .message-item {
+  .message-empty {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 284px;
-    padding: 20px 0;
-    border-bottom: 1px solid #e4e7ed;
-    &:last-child {
-      border: none;
-    }
-    .message-icon {
-      width: 40px;
-      height: 40px;
-      margin: 0 20px 0 5px;
-    }
-    .message-content {
+    height: 260px;
+    line-height: 45px;
+  }
+  .message-list {
+    display: flex;
+    flex-direction: column;
+    .message-item {
       display: flex;
-      flex-direction: column;
-      .message-title {
-        margin-bottom: 5px;
+      align-items: center;
+      width: 284px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e4e7ed;
+      &:last-child {
+        border: none;
       }
-      .message-date {
-        font-size: 12px;
-        color: #909309;
+      .message-icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 20px 0 5px;
+      }
+      .message-content {
+        display: flex;
+        flex-direction: column;
+        .message-title {
+          margin-bottom: 5px;
+        }
+        .message-date {
+          font-size: 12px;
+          color: #909309;
+        }
       }
     }
   }
-}
 </style>

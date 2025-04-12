@@ -3,7 +3,7 @@
     <a-layout-header class="transverse-header">
       <div class="logo flx-center">
         <img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
-        <span class="logo-text">GuYue Admin</span>
+        <span class="logo-text">VTI CORP</span>
       </div>
       <a-menu v-model:selectedKeys="activeMenu" :theme="'dark'" mode="horizontal" :style="{ lineHeight: '55px' }">
         <template v-for="subItem in menuList" :key="subItem.name">

@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 import { HOME_URL, LOGIN_URL } from '@/config';
+import { staticMenu } from './staticMenu';
 
 export const staticRouter: RouteRecordRaw[] = [
   {
@@ -19,7 +20,7 @@ export const staticRouter: RouteRecordRaw[] = [
     name: 'layout',
     component: () => import('@/layouts/index.vue'),
     redirect: HOME_URL,
-    children: [],
+    children: [...staticMenu],
   },
 ];
 

@@ -11,7 +11,7 @@
       <div class="menu" :style="{ width: isCollapse ? '70px' : '200px' }">
         <div class="logo flx-center">
           <img src="@/assets/images/logo.svg" alt="logo" />
-          <span v-show="!isCollapse">GuYue Admin</span>
+          <span v-show="!isCollapse">VTI CORP</span>
         </div>
         <div class="scrollbar menu-scrollbar">
           <a-menu v-model:selectedKeys="activeMenu" :theme="theme" mode="inline">

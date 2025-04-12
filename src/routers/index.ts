@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import { useUserStore } from '@/stores/modules/user';
 import { useAuthStore } from '@/stores/modules/auth';
 import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
@@ -23,7 +23,7 @@ import NProgress from '@/config/nprogress';
  * @param meta.isKeepAlive ==> Whether to cache
  * */
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [...staticRouter, ...errorRouter],
   strict: false,
   scrollBehavior: () => ({ left: 0, top: 0 }),
@@ -35,27 +35,21 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
 
-  // 1. Start NProgress
   NProgress.start();
 
-  // 2. Dynamically set page title
-  const title = import.meta.env.VITE_GLOB_APP_TITLE;
+  const title = import.meta.env.VITE_APP_TITLE;
   document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
 
-  // 3. If accessing login page: with Token stay on current page, without Token reset router and proceed to login
   if (to.path === LOGIN_URL) {
     if (userStore.token) return next(from.fullPath);
     resetRouter();
     return next();
   }
 
-  // 4. If accessing page is in router whitelist, allow direct access
   if (ROUTER_WHITE_LIST.includes(to.path)) return next();
 
-  // 5. Check if Token exists, redirect to login if not
   if (!userStore.token) return next({ path: LOGIN_URL, replace: true });
 
-  // 6. If menu list doesn't exist, request menu list and add dynamic routes
   const authStore = useAuthStore();
   authStore.setRouteName(to.name as string);
   if (!authStore.authMenuListGet.length) {
@@ -63,7 +57,6 @@ router.beforeEach(async (to, from, next) => {
     return next({ ...to, replace: true });
   }
 
-  // 7. Normal page access
   next();
 });
 

@@ -1,8 +1,8 @@
-# GuYue-Admin -- A High-Quality Admin Dashboard
+# VTI CORP -- A High-Quality Admin Dashboard
 
 ### Introduction 📖
 
-GuYue-Admin is an open-source admin management framework based on Vue3.0, TypeScript, Vite3.2, Pinia, Ant Design Vue, and Unocss, developed using the latest technology stack. It provides simple components based on antd vue ProTable (please forgive any imperfections in the implementation), which can improve your development efficiency to some extent. Additionally, this project also encapsulates some commonly used components (right-click menu, etc.), Hooks, directives, dynamic routing, button-level permission control, and other features.
+VTI CORP is an open-source admin management framework based on Vue3.0, TypeScript, Vite3.2, Pinia, Ant Design Vue, and Unocss, developed using the latest technology stack. It provides simple components based on antd vue ProTable (please forgive any imperfections in the implementation), which can improve your development efficiency to some extent. Additionally, this project also encapsulates some commonly used components (right-click menu, etc.), Hooks, directives, dynamic routing, button-level permission control, and other features.
 
 ### Online Preview 👀
 
@@ -10,8 +10,8 @@ GuYue-Admin is an open-source admin management framework based on Vue3.0, TypeSc
 
 ### Code Repository ⭐
 
-- Gitee: https://gitee.com/Y_lao/GuYue-Admin
-- GitHub: https://github.com/Y-Lao/GuYue-Admin.git
+- Gitee: https://gitee.com/Y_lao/VTI CORP
+- GitHub: https://github.com/Y-Lao/VTI CORP.git
 
 ### Project Documentation 📚
 
@@ -39,9 +39,9 @@ GuYue-Admin is an open-source admin management framework based on Vue3.0, TypeSc
 
 ```text
 # Gitee
-git clone https://gitee.com/Y_lao/GuYue-Admin
+git clone https://gitee.com/Y_lao/VTI CORP
 # GitHub
-git clone https://github.com/Y-Lao/GuYue-Admin.git
+git clone https://github.com/Y-Lao/VTI CORP.git
 ```
 
 - **Install:**
@@ -134,7 +134,7 @@ yarn commit
 ### Directory Structure 📚
 
 ```text
-GuYue-Admin
+VTI CORP
 ├─ .husky                 # husky configuration files
 ├─ .vscode                # VSCode recommended configuration
 ├─ build                  # Vite configuration items

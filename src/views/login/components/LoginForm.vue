@@ -1,14 +1,14 @@
 <template>
   <a-form ref="loginFormRef" :model="loginForm" :rules="loginRules" size="large">
     <a-form-item class="login-form-item" name="username">
-      <a-input v-model:value="loginForm.username" placeholder="用户名：admin / user">
+      <a-input v-model:value="loginForm.username" placeholder="Username: admin / user">
         <template #prefix>
           <user-outlined />
         </template>
       </a-input>
     </a-form-item>
     <a-form-item class="login-form-item" name="password">
-      <a-input-password v-model:value="loginForm.password" placeholder="密码：123456">
+      <a-input-password v-model:value="loginForm.password" placeholder="Password: 123456">
         <template #prefix>
           <lock-outlined />
         </template>
@@ -32,77 +32,77 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { Login } from '@/api/interface';
-import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons-vue';
-import { notification } from 'ant-design-vue';
-import type { FormInstance } from 'ant-design-vue';
-import { loginApi } from '@/api/modules/login';
-import { useUserStore } from '@/stores/modules/user';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
-import { getTimeState } from '@/utils/util';
-import { HOME_URL } from '@/config';
-import { initDynamicRouter } from '@/routers/modules/dynamicRouter';
-import md5 from 'js-md5';
+  import { ref, reactive, onMounted } from 'vue';
+  import { useRouter } from 'vue-router';
+  import { Login } from '@/api/interface';
+  import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons-vue';
+  import { notification } from 'ant-design-vue';
+  import type { FormInstance } from 'ant-design-vue';
+  import { loginApi } from '@/api/modules/login';
+  import { useUserStore } from '@/stores/modules/user';
+  import { useTabsStore } from '@/stores/modules/tabs';
+  import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+  import { getTimeState } from '@/utils/util';
+  import { HOME_URL } from '@/config';
+  import { initDynamicRouter } from '@/routers/modules/dynamicRouter';
+  import md5 from 'js-md5';
 
-const router = useRouter();
-const tabsStore = useTabsStore();
-const userStore = useUserStore();
-const keepAliveStore = useKeepAliveStore();
+  const router = useRouter();
+  const tabsStore = useTabsStore();
+  const userStore = useUserStore();
+  const keepAliveStore = useKeepAliveStore();
 
-const loginFormRef = ref<FormInstance>();
-const loginRules = reactive({
-  username: [{ required: true, message: '请输入用户名!', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码!', trigger: 'blur' }],
-});
-
-const loading = ref(false);
-const loginForm = reactive<Login.ReqLoginForm>({ username: '', password: '' });
-const login = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.validate().then(async valid => {
-    if (!valid) return;
-    loading.value = true;
-    try {
-      const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
-      userStore.setToken(data.access_token);
-
-      await initDynamicRouter();
-
-      tabsStore.closeMultipleTab();
-      keepAliveStore.setKeepAliveName();
-
-      router.push(HOME_URL);
-      notification['success']({
-        message: getTimeState(),
-        description: '欢迎登录 GuYue-Admin',
-        style: { borderRadius: '8px' },
-        duration: 3,
-      });
-    } finally {
-      loading.value = false;
-    }
+  const loginFormRef = ref<FormInstance>();
+  const loginRules = reactive({
+    username: [{ required: true, message: 'Please enter your username!', trigger: 'blur' }],
+    password: [{ required: true, message: 'Please enter your password!', trigger: 'blur' }],
   });
-};
 
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.resetFields();
-};
+  const loading = ref(false);
+  const loginForm = reactive<Login.ReqLoginForm>({ username: '', password: '' });
+  const login = (formEl: FormInstance | undefined) => {
+    if (!formEl) return;
+    formEl.validate().then(async valid => {
+      if (!valid) return;
+      loading.value = true;
+      try {
+        const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
+        userStore.setToken(data.access_token);
 
-onMounted(() => {
-  document.onkeydown = (e: any) => {
-    e = window.event || e;
-    if (e.code === 'Enter' || e.code === 'enter' || e.code === 'NumpadEnter') {
-      if (loading.value) return;
-      login(loginFormRef.value);
-    }
+        await initDynamicRouter();
+
+        tabsStore.closeMultipleTab();
+        keepAliveStore.setKeepAliveName();
+
+        router.push(HOME_URL);
+        notification['success']({
+          message: getTimeState(),
+          description: 'Welcome to VTI CORP',
+          style: { borderRadius: '8px' },
+          duration: 3,
+        });
+      } finally {
+        loading.value = false;
+      }
+    });
   };
-});
+
+  const resetForm = (formEl: FormInstance | undefined) => {
+    if (!formEl) return;
+    formEl.resetFields();
+  };
+
+  onMounted(() => {
+    document.onkeydown = (e: any) => {
+      e = window.event || e;
+      if (e.code === 'Enter' || e.code === 'enter' || e.code === 'NumpadEnter') {
+        if (loading.value) return;
+        login(loginFormRef.value);
+      }
+    };
+  });
 </script>
 
 <style scoped lang="less">
-@import url('../index.less');
+  @import url('../index.less');
 </style>

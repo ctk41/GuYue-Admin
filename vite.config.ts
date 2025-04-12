@@ -40,19 +40,31 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       preprocessorOptions: {
         less: {
           additionalData: `
-					@import "@/styles/var.less";
-                    `,
+					  @import "@/styles/var.less";
+          `,
           javascriptEnabled: true,
         },
       },
     },
-    // server: {
-    // 	host: "0.0.0.0",
-    // 	port: viteEnv.VITE_PORT,
-    // 	open: viteEnv.VITE_OPEN,
-    // 	cors: true,
-    // 	proxy: createProxy(viteEnv.VITE_PROXY)
-    // },
+    server: {
+      host: '0.0.0.0',
+      port: viteEnv.VITE_PORT,
+      open: viteEnv.VITE_OPEN,
+      cors: true,
+      hmr: {
+        overlay: true,
+        protocol: 'ws',
+        host: 'localhost',
+        port: viteEnv.VITE_PORT,
+        timeout: 5000,
+      },
+      watch: {
+        usePolling: true,
+        interval: 100,
+        ignored: ['**/node_modules/**', '**/dist/**'],
+      },
+      // proxy: createProxy(viteEnv.VITE_PROXY)
+    },
     plugins: [
       vue(),
       vueJsx(),
@@ -60,7 +72,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       createHtmlPlugin({
         inject: {
           data: {
-            title: viteEnv.VITE_GLOB_APP_TITLE,
+            title: viteEnv.VITE_APP_TITLE,
           },
         },
       }),

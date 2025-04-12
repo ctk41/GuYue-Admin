@@ -7,7 +7,7 @@ export default [
     response: () => {
       return {
         code: 200,
-        msg: '成功',
+        msg: 'Success',
         data: [
           {
             path: '/home/index',
@@ -15,7 +15,7 @@ export default [
             component: '/home/index',
             meta: {
               icon: 'HomeFilled',
-              title: '工作台',
+              title: 'Workplace',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -29,7 +29,7 @@ export default [
             redirect: '/proTable/useProTable',
             meta: {
               icon: 'TableOutlined',
-              title: '超级表格',
+              title: 'Super Table',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -43,7 +43,7 @@ export default [
                 component: '/proTable/useProTable/index',
                 meta: {
                   icon: 'InsertRowAboveOutlined',
-                  title: '简单表格',
+                  title: 'Simple Table',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -57,7 +57,7 @@ export default [
                     component: '/proTable/useProTable/detail',
                     meta: {
                       icon: 'FileTextOutlined',
-                      title: '用户详情',
+                      title: 'User Details',
                       activeMenu: '/proTable/useProTable',
                       isLink: '',
                       isHide: true,
@@ -76,7 +76,7 @@ export default [
             redirect: '/dashboard/dataVisualize',
             meta: {
               icon: 'DashboardOutlined',
-              title: '仪表盘',
+              title: 'Dashboard',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -90,7 +90,7 @@ export default [
                 component: '/dashboard/dataVisualize/index',
                 meta: {
                   icon: 'FundViewOutlined',
-                  title: '主控台',
+                  title: 'Control Panel',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -104,7 +104,7 @@ export default [
                 component: '/dashboard/embedded/index',
                 meta: {
                   icon: 'chromeOutlined',
-                  title: '内嵌页面',
+                  title: 'Embedded Pages',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -120,7 +120,7 @@ export default [
             redirect: '/form/proForm',
             meta: {
               icon: 'FileTextOutlined',
-              title: '表单',
+              title: 'Forms',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -134,7 +134,7 @@ export default [
                 component: '/form/basicForm/index',
                 meta: {
                   icon: 'ProfileOutlined',
-                  title: '基础表单',
+                  title: 'Basic Form',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -148,7 +148,7 @@ export default [
                 component: '/form/dynamicForm/index',
                 meta: {
                   icon: 'FileAddOutlined',
-                  title: '动态表单',
+                  title: 'Dynamic Form',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -162,7 +162,7 @@ export default [
                 component: '/form/substepForm/index',
                 meta: {
                   icon: 'BarsOutlined',
-                  title: '分步表单',
+                  title: 'Step Form',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -178,7 +178,7 @@ export default [
             redirect: '/auth/menu',
             meta: {
               icon: 'LockOutlined',
-              title: '权限管理',
+              title: 'Permission Management',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -192,7 +192,7 @@ export default [
                 component: '/auth/menu/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '菜单权限',
+                  title: 'Menu Permissions',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -206,7 +206,7 @@ export default [
                 component: '/auth/button/index',
                 meta: {
                   icon: 'KeyOutlined',
-                  title: '按钮权限',
+                  title: 'Button Permissions',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -222,7 +222,7 @@ export default [
             redirect: '/function/rightMenu',
             meta: {
               icon: 'ControlOutlined',
-              title: '功能示例',
+              title: 'Feature Examples',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -236,7 +236,7 @@ export default [
                 component: '/function/rightMenu/index',
                 meta: {
                   icon: 'AlignRightOutlined',
-                  title: '右键菜单',
+                  title: 'Right-click Menu',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -250,7 +250,7 @@ export default [
                 component: '/function/unocss/index',
                 meta: {
                   icon: 'DeploymentUnitOutlined',
-                  title: '原子化CSS',
+                  title: 'Atomic CSS',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -264,7 +264,7 @@ export default [
                 component: '/function/nestedMenu/index',
                 meta: {
                   icon: 'AlignRightOutlined',
-                  title: '右键菜单之嵌套菜单',
+                  title: 'Nested Right-click Menu',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -280,7 +280,7 @@ export default [
             redirect: '/assembly/guide',
             meta: {
               icon: 'ToolOutlined',
-              title: '常用组件',
+              title: 'Common Components',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -294,7 +294,7 @@ export default [
                 component: '/assembly/guide/index',
                 meta: {
                   icon: 'BulbOutlined',
-                  title: '引导页',
+                  title: 'Guide Page',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -308,7 +308,7 @@ export default [
                 component: '/assembly/tabs/index',
                 meta: {
                   icon: 'ThunderboltOutlined',
-                  title: '标签页操作',
+                  title: 'Tab Operations',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -322,7 +322,7 @@ export default [
                     component: '/assembly/tabs/detail',
                     meta: {
                       icon: 'AppstoreOutlined',
-                      title: 'Tab 详情',
+                      title: 'Tab Details',
                       activeMenu: '/assembly/tabs',
                       isLink: '',
                       isHide: true,
@@ -339,7 +339,7 @@ export default [
                 component: '/assembly/selectIcon/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '图标选择器',
+                  title: 'Icon Selector',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -353,7 +353,7 @@ export default [
                 component: '/assembly/selectFilter/index',
                 meta: {
                   icon: 'ClusterOutlined',
-                  title: '分类筛选器',
+                  title: 'Category Filter',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -367,7 +367,7 @@ export default [
                 component: '/assembly/treeFilter/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '树形筛选器',
+                  title: 'Tree Filter',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -381,7 +381,7 @@ export default [
                 component: '/assembly/select/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '选择器',
+                  title: 'Selector',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -395,7 +395,7 @@ export default [
                 component: '/assembly/uploadFile/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '文件上传',
+                  title: 'File Upload',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -409,7 +409,7 @@ export default [
                 component: '/assembly/batchImport/index',
                 meta: {
                   icon: 'UploadOutlined',
-                  title: '批量添加数据',
+                  title: 'Batch Data Import',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -423,7 +423,7 @@ export default [
                 component: '/assembly/wangEditor/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '富文本编辑器',
+                  title: 'Rich Text Editor',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -437,7 +437,7 @@ export default [
                 component: '/assembly/draggable/index',
                 meta: {
                   icon: 'DragOutlined',
-                  title: '拖拽组件',
+                  title: 'Drag Component',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -451,7 +451,7 @@ export default [
                 component: '/assembly/digitalScrolling/index',
                 meta: {
                   icon: 'PropertySafetyOutlined',
-                  title: '数字滚动',
+                  title: 'Digital Scrolling',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -467,7 +467,7 @@ export default [
             redirect: '/echarts/waterChart',
             meta: {
               icon: 'FundOutlined',
-              title: '图表',
+              title: 'Charts',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -481,7 +481,7 @@ export default [
                 component: '/echarts/waterChart/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '水型图',
+                  title: 'Water Chart',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -495,7 +495,7 @@ export default [
                 component: '/echarts/columnChart/index',
                 meta: {
                   icon: 'BarChartOutlined',
-                  title: '柱状图',
+                  title: 'Column Chart',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -509,7 +509,7 @@ export default [
                 component: '/echarts/lineChart/index',
                 meta: {
                   icon: 'AreaChartOutlined',
-                  title: '折线图',
+                  title: 'Line Chart',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -523,7 +523,7 @@ export default [
                 component: '/echarts/pieChart/index',
                 meta: {
                   icon: 'PieChartOutlined',
-                  title: '饼图',
+                  title: 'Pie Chart',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -537,107 +537,7 @@ export default [
                 component: '/echarts/radarChart/index',
                 meta: {
                   icon: 'RadarChartOutlined',
-                  title: '雷达图',
-                  isLink: '',
-                  isHide: false,
-                  isFull: false,
-                  isAffix: false,
-                  isKeepAlive: true,
-                },
-              },
-            ],
-          },
-          {
-            path: '/directives',
-            name: 'directives',
-            redirect: '/directives/copyDirect',
-            meta: {
-              icon: 'FireOutlined',
-              title: '自定义指令',
-              isLink: '',
-              isHide: false,
-              isFull: false,
-              isAffix: false,
-              isKeepAlive: true,
-            },
-            children: [
-              {
-                path: '/directives/copyDirect',
-                name: 'CopyOutlined',
-                component: '/directives/copyDirect/index',
-                meta: {
-                  icon: 'CopyOutlined',
-                  title: '复制指令',
-                  isLink: '',
-                  isHide: false,
-                  isFull: false,
-                  isAffix: false,
-                  isKeepAlive: true,
-                },
-              },
-              {
-                path: '/directives/watermarkDirect',
-                name: 'watermarkDirect',
-                component: '/directives/watermarkDirect/index',
-                meta: {
-                  icon: 'FormatPainterOutlined',
-                  title: '水印指令',
-                  isLink: '',
-                  isHide: false,
-                  isFull: false,
-                  isAffix: false,
-                  isKeepAlive: true,
-                },
-              },
-              {
-                path: '/directives/dragDirect',
-                name: 'dragDirect',
-                component: '/directives/dragDirect/index',
-                meta: {
-                  icon: 'DragOutlined',
-                  title: '拖拽指令',
-                  isLink: '',
-                  isHide: false,
-                  isFull: false,
-                  isAffix: false,
-                  isKeepAlive: true,
-                },
-              },
-              {
-                path: '/directives/debounceDirect',
-                name: 'debounceDirect',
-                component: '/directives/debounceDirect/index',
-                meta: {
-                  icon: 'ShakeOutlined',
-                  title: '防抖指令',
-                  isLink: '',
-                  isHide: false,
-                  isFull: false,
-                  isAffix: false,
-                  isKeepAlive: true,
-                },
-              },
-              {
-                path: '/directives/throttleDirect',
-                name: 'throttleDirect',
-                component: '/directives/throttleDirect/index',
-                meta: {
-                  icon: 'HourglassOutlined',
-                  title: '节流指令',
-                  isLink: '',
-                  isHide: false,
-                  isFull: false,
-                  isAffix: false,
-                  isKeepAlive: true,
-                },
-              },
-              {
-                path: '/directives/longpressDirect',
-                name: 'longpressDirect',
-                component: '/directives/longpressDirect/index',
-                meta: {
-                  icon: 'LikeOutlined',
-                  title: '长按指令',
+                  title: 'Radar Chart',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -653,7 +553,7 @@ export default [
             redirect: '/menu/menu1',
             meta: {
               icon: 'MenuOutlined',
-              title: '菜单嵌套',
+              title: 'Nested Menus',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -667,7 +567,7 @@ export default [
                 component: '/menu/menu1/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '菜单1',
+                  title: 'Menu 1',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -681,7 +581,7 @@ export default [
                 redirect: '/menu/menu2/menu21',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '菜单2',
+                  title: 'Menu 2',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -695,7 +595,7 @@ export default [
                     component: '/menu/menu2/menu21/index',
                     meta: {
                       icon: 'AppstoreOutlined',
-                      title: '菜单2-1',
+                      title: 'Menu 2-1',
                       isLink: '',
                       isHide: false,
                       isFull: false,
@@ -709,7 +609,7 @@ export default [
                     redirect: '/menu/menu2/menu22/menu221',
                     meta: {
                       icon: 'AppstoreOutlined',
-                      title: '菜单2-2',
+                      title: 'Menu 2-2',
                       isLink: '',
                       isHide: false,
                       isFull: false,
@@ -723,7 +623,7 @@ export default [
                         component: '/menu/menu2/menu22/menu221/index',
                         meta: {
                           icon: 'AppstoreOutlined',
-                          title: '菜单2-2-1',
+                          title: 'Menu 2-2-1',
                           isLink: '',
                           isHide: false,
                           isFull: false,
@@ -737,7 +637,7 @@ export default [
                         component: '/menu/menu2/menu22/menu222/index',
                         meta: {
                           icon: 'AppstoreOutlined',
-                          title: '菜单2-2-2',
+                          title: 'Menu 2-2-2',
                           isLink: '',
                           isHide: false,
                           isFull: false,
@@ -753,7 +653,7 @@ export default [
                     component: '/menu/menu2/menu23/index',
                     meta: {
                       icon: 'AppstoreOutlined',
-                      title: '菜单2-3',
+                      title: 'Menu 2-3',
                       isLink: '',
                       isHide: false,
                       isFull: false,
@@ -769,7 +669,7 @@ export default [
                 component: '/menu/menu3/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: '菜单3',
+                  title: 'Menu 3',
                   isLink: '',
                   isHide: false,
                   isFull: false,
@@ -785,7 +685,7 @@ export default [
             redirect: '/link/gitee',
             meta: {
               icon: 'PaperClipOutlined',
-              title: '外部链接',
+              title: 'External Links',
               isLink: '',
               isHide: false,
               isFull: false,
@@ -799,8 +699,8 @@ export default [
                 component: '/link/gitee/index',
                 meta: {
                   icon: 'AppstoreOutlined',
-                  title: 'Gitee 仓库',
-                  isLink: 'https://gitee.com/Y_lao/GuYue-Admin',
+                  title: 'Gitee Repository',
+                  isLink: 'https://gitee.com/Y_lao/VTI CORP',
                   isHide: false,
                   isFull: false,
                   isAffix: false,
@@ -813,7 +713,7 @@ export default [
                 component: '/link/github/index',
                 meta: {
                   icon: 'GithubOutlined',
-                  title: 'GitHub 仓库',
+                  title: 'GitHub Repository',
                   isLink: 'https://github.com/Y-Lao',
                   isHide: false,
                   isFull: false,
@@ -827,7 +727,7 @@ export default [
                 component: '/link/geekerDocs/index',
                 meta: {
                   icon: 'FileSearchOutlined',
-                  title: '项目文档',
+                  title: 'Project Documentation',
                   isLink: 'https://www.yuque.com/dashboard',
                   isHide: false,
                   isFull: false,
@@ -841,7 +741,7 @@ export default [
                 component: '/link/juejin/index',
                 meta: {
                   icon: 'ThunderboltOutlined',
-                  title: '掘金主页',
+                  title: 'Juejin Homepage',
                   isLink: 'https://juejin.cn/user/4068638047082029/posts',
                   isHide: false,
                   isFull: false,
@@ -857,7 +757,7 @@ export default [
             component: '/about/index',
             meta: {
               icon: 'ProjectOutlined',
-              title: '关于项目',
+              title: 'About Project',
               isLink: '',
               isHide: false,
               isFull: false,

@@ -1,5 +1,5 @@
 <template>
-  <a-card title="工作台" :bordered="false" :bodyStyle="{ padding: '15px' }" class="mb-6">
+  <a-card title="Workbench" :bordered="false" :bodyStyle="{ padding: '15px' }" class="mb-6">
     <a-row>
       <a-col :span="12">
         <div class="flx-align-center">
@@ -11,21 +11,21 @@
           <div>
             <p class="px-16 text-title">
               <span>{{ time }}</span
-              >，{{ username }}，开始您一天的工作吧！
+              >, {{ username }}, let's start your day's work!
             </p>
-            <p class="px-16 text-gray">今日阴转大雨，17℃ - 28℃，出门记得带伞哦。</p>
+            <p class="px-16 text-gray">Today cloudy turning to heavy rain, 17℃ - 28℃, remember to bring an umbrella.</p>
           </div>
         </div>
       </a-col>
       <a-col :span="12" class="flx-justify-between">
         <a-card :bordered="false" :bodyStyle="{ padding: '6px' }">
-          <p class="count-text">项目数</p>
+          <p class="count-text">Projects</p>
           <a-typography-text strong class="info-size">
             <CountUp :end="1600" :options="{ prefix: '' }"></CountUp>
           </a-typography-text>
         </a-card>
         <a-card :bordered="false" :bodyStyle="{ padding: '6px' }">
-          <p class="count-text">待办</p>
+          <p class="count-text">To-do</p>
           <a-typography-text strong class="info-size">
             <CountUp :end="9" :options="{ prefix: '' }"></CountUp>/<CountUp
               :end="16"
@@ -34,7 +34,7 @@
           </a-typography-text>
         </a-card>
         <a-card :bordered="false" :bodyStyle="{ padding: '6px' }">
-          <p class="count-text">消息</p>
+          <p class="count-text">Messages</p>
           <a-typography-text strong class="info-size">
             <CountUp :end="1136" :options="{ prefix: '' }"></CountUp>
           </a-typography-text>
@@ -44,8 +44,8 @@
   </a-card>
   <a-row :gutter="6">
     <a-col :span="12">
-      <a-card title="工程项目" class="mb-6">
-        <template #extra><a href="https://gitee.com/Y_lao/GuYue-Admin" target="_blank">更多项目</a></template>
+      <a-card title="Engineering Projects1234" class="mb-6">
+        <template #extra><a href="https://gitee.com/Y_lao/VTI CORP" target="_blank">More Projects</a></template>
         <a-card-grid v-for="item in projectData" :key="item.title">
           <div class="flex flex-row">
             <component :is="item.icon" :style="{ fontSize: '30px', color: item.color }"></component>
@@ -64,7 +64,7 @@
           </div>
         </a-card-grid>
       </a-card>
-      <a-card title="动态" :bordered="false" :bodyStyle="{ paddingTop: 0, paddingBottom: 0 }">
+      <a-card title="Activities" :bordered="false" :bodyStyle="{ paddingTop: 0, paddingBottom: 0 }">
         <a-list item-layout="horizontal" :data-source="dynamicData">
           <template #renderItem="{ item }">
             <a-list-item>
@@ -86,7 +86,7 @@
       </a-card>
     </a-col>
     <a-col :span="12">
-      <a-card title="快捷操作" class="mb-6">
+      <a-card title="Quick Actions" class="mb-6">
         <a-card-grid
           style="padding: 12px; text-align: center"
           v-for="item in shortcutKeyList"
@@ -101,7 +101,7 @@
           </div>
         </a-card-grid>
       </a-card>
-      <a-card title="Gitee / GitHub 访问量占比" :bodyStyle="{ height: '350px' }">
+      <a-card title="Gitee / GitHub Visit Proportion" :bodyStyle="{ height: '350px' }">
         <div class="book-echarts">
           <Pie ref="pieRef" />
         </div>
@@ -157,7 +157,7 @@
   const shortcutKeyList: ShortcutKeyItem[] = [
     {
       icon: 'FundViewOutlined',
-      title: '主控台',
+      title: 'Dashboard',
       color: '#68c755',
       onClick: () => {
         router.push('/dashboard/dataVisualize');
@@ -165,7 +165,7 @@
     },
     {
       icon: 'FileTextOutlined',
-      title: '表单',
+      title: 'Forms',
       color: '#fab558',
       onClick: () => {
         router.push('/form/basicForm');
@@ -173,7 +173,7 @@
     },
     {
       icon: 'LockOutlined',
-      title: '权限管理',
+      title: 'Permissions',
       color: '#3da2ff',
       onClick: () => {
         router.push('/auth/menu');
@@ -181,7 +181,7 @@
     },
     {
       icon: 'BarChartOutlined',
-      title: '数据大屏',
+      title: 'Data Screen',
       color: '#f387aa',
       onClick: () => {
         router.push('/dataScreen');
@@ -189,7 +189,7 @@
     },
     {
       icon: 'ProjectOutlined',
-      title: '关于项目',
+      title: 'About Project',
       color: '#814dd6',
       onClick: () => {
         router.push('/about/index');
@@ -197,7 +197,7 @@
     },
     {
       icon: 'MailOutlined',
-      title: '消息',
+      title: 'Messages',
       color: '#5cdbd3',
       onClick: () => {},
     },
@@ -205,37 +205,37 @@
   const dynamicData: DataItem[] = [
     {
       id: '1',
-      title: 'vue3自定义右键菜单组件',
+      title: 'Vue3 Custom Right-click Menu Component',
       link: 'https://juejin.cn/post/7212456518331088952',
       desc: '2023-05-06 22:06:16',
     },
     {
       id: '2',
-      title: '工程化之Axios + Ts的二次封装',
+      title: 'Engineering: Axios + Ts Secondary Encapsulation',
       link: 'https://juejin.cn/post/7175174061515866149',
       desc: '2023-05-04 12:17:16',
     },
     {
       id: '3',
-      title: 'less 定义全局样式',
+      title: 'Less Global Style Definition',
       link: 'https://juejin.cn/post/7167007858394546213',
       desc: '2023-05-03 21:37:16',
     },
     {
       id: '4',
-      title: 'vue3.2 - nextTick的使用',
+      title: 'Vue3.2 - Using nextTick',
       link: 'https://juejin.cn/post/7039135899904393229',
       desc: '2023-05-02 15:27:16',
     },
     {
       id: '5',
-      title: 'Vue版的 hooks 库 --- VueUse',
+      title: 'Vue Version Hooks Library - VueUse',
       link: 'https://juejin.cn/post/7055248384713555999',
       desc: '2023-05-01 05:30:16',
     },
     {
       id: '6',
-      title: 'Vue3自定义指令-10个常见的实用指令',
+      title: 'Vue3 Custom Directives - 10 Common Practical Directives',
       link: 'https://juejin.cn/post/6968996649515515917',
       desc: '2023-05-01 16:17:16',
     },
@@ -244,56 +244,56 @@
     {
       icon: 'GithubOutlined',
       title: 'Github',
-      desc: '是一个面向开源及私有软件项目的托管平台。',
-      author: '开源君 2021-07-04',
+      desc: 'A hosting platform for open source and private software projects.',
+      author: 'Open Source Master 2021-07-04',
       color: '#333639',
       link: 'https://github.com/',
     },
     {
       icon: 'GitlabOutlined',
       title: 'Gitlab',
-      desc: '基于git的项目管理软件。',
-      author: '学不动也要学 2021-07-04',
+      desc: 'A git-based project management software.',
+      author: 'Must Learn 2021-07-04',
       color: '#47ba86',
       link: 'https://gitlab.com/users/sign_in',
     },
     {
       icon: 'Html5Outlined',
       title: 'HTML5',
-      desc: 'HTML5是互联网的下一代标准。',
-      author: '撸码也是一种艺术 2021-04-01',
+      desc: 'HTML5 is the next generation standard for the internet.',
+      author: 'Coding is an Art 2021-04-01',
       color: '#e4502c',
       link: 'https://www.w3school.com.cn/html/html5_intro.asp',
     },
     {
       icon: 'TaobaoCircleOutlined',
-      title: '淘宝网',
-      desc: '只有你想不到，没有你淘不到。',
-      author: '购物天地 2021-04-01',
+      title: 'Taobao',
+      desc: 'If you can think of it, you can find it here.',
+      author: 'Shopping World 2021-04-01',
       color: '#42b983',
       link: 'https://www.taobao.com/',
     },
     {
       icon: 'AlipayCircleOutlined',
-      title: '支付宝',
-      desc: '致力于为企业和个人提供，简单、安全、快速、支付解决方案。',
-      author: '支付工具 2021-07-04',
+      title: 'Alipay',
+      desc: 'Committed to providing simple, secure, and fast payment solutions for businesses and individuals.',
+      author: 'Payment Tool 2021-07-04',
       color: '#61dafb',
       link: 'https://auth.alipay.com/login/index.htm',
     },
     {
       icon: 'WeiboOutlined',
-      title: '微博',
-      desc: '分享简短实时信息的社交平台。',
-      author: '分享君 2021-07-04',
+      title: 'Weibo',
+      desc: 'A social platform for sharing short real-time information.',
+      author: 'Share Master 2021-07-04',
       color: '#dd0031',
       link: 'https://weibo.com/newlogin?url=https%3A%2F%2Fweibo.com%2F',
     },
   ];
 
   const pieData = [
-    { value: 4524, name: 'Gitee 访问量' },
-    { value: 8616, name: 'GitHub 访问量' },
+    { value: 4524, name: 'Gitee Visits' },
+    { value: 8616, name: 'GitHub Visits' },
   ];
 
   onMounted(() => {

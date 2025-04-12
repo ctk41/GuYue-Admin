@@ -1,13 +1,13 @@
 <template>
   <div class="card content-box">
-    <a-alert class="w-100 mb-20" message="我是menu2-2-2 🍓🍇🍈🍉" type="info" />
-    <a-input v-model:value="value" placeholder="测试缓存"></a-input>
+    <a-alert class="w-100 mb-20" message="I am menu2-2-2 🍓🍇🍈🍉" type="info" />
+    <a-input v-model:value="value" placeholder="Test cache"></a-input>
   </div>
 </template>
 
 <script setup lang="ts" name="menu222">
-import { ref } from 'vue';
-const value = ref<string>('');
+  import { ref } from 'vue';
+  const value = ref<string>('');
 </script>
 
 <style scoped lang="less"></style>

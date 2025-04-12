@@ -16,7 +16,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
     createHtmlPlugin({
       inject: {
         data: {
-          title: viteEnv.VITE_GLOB_APP_TITLE,
+          title: viteEnv.VITE_APP_TITLE,
         },
       },
     }),
