@@ -150,6 +150,9 @@ importers:
       lint-staged:
         specifier: ^12.4.2
         version: 12.5.0
+      pinia-plugin-logger:
+        specifier: ^1.0.0
+        version: 1.0.0(pinia@2.3.1(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5)))(vue@3.5.13(typescript@4.9.5))
       postcss-html:
         specifier: ^1.5.0
         version: 1.8.0
@@ -3299,6 +3302,12 @@ packages:
   pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
+
+  pinia-plugin-logger@1.0.0:
+    resolution: {integrity: sha512-KTRPU1UBUVH+fljYA8K1Q6HUkJ/7SymD2TxnONGamgjsGR6yJVW/ATGSflHbZY+9nLYbBGdB7eGvBwc0oFt8pA==}
+    peerDependencies:
+      pinia: ^2.0.0 || ^3.0.0
+      vue: ^3.2.0
 
   pinia-plugin-persistedstate@3.2.3:
     resolution: {integrity: sha512-Cm819WBj/s5K5DGw55EwbXDtx+EZzM0YR5AZbq9XE3u0xvXwvX2JnWoFpWIcdzISBHqy9H1UiSIUmXyXqWsQRQ==}
@@ -7742,6 +7751,12 @@ snapshots:
 
   pify@4.0.1:
     optional: true
+
+  pinia-plugin-logger@1.0.0(pinia@2.3.1(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5)))(vue@3.5.13(typescript@4.9.5)):
+    dependencies:
+      dayjs: 1.11.13
+      pinia: 2.3.1(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))
+      vue: 3.5.13(typescript@4.9.5)
 
   pinia-plugin-persistedstate@3.2.3(pinia@2.3.1(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))):
     dependencies:
