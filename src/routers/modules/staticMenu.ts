@@ -1,6 +1,6 @@
-import { RouteRecordRaw } from 'vue-router';
+import { Menu } from '@/types/menu';
 
-export const staticMenu: RouteRecordRaw[] = [
+export const staticMenu: Menu.MenuOptions[] = [
   {
     path: '/home/index',
     name: 'home',
@@ -155,50 +155,6 @@ export const staticMenu: RouteRecordRaw[] = [
         meta: {
           icon: 'BarsOutlined',
           title: 'Step Form',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
-        },
-      },
-    ],
-  },
-  {
-    path: '/auth',
-    name: 'auth',
-    redirect: '/auth/menu',
-    meta: {
-      icon: 'LockOutlined',
-      title: 'Permission Management',
-      isLink: '',
-      isHide: false,
-      isFull: false,
-      isAffix: false,
-      isKeepAlive: true,
-    },
-    children: [
-      {
-        path: '/auth/menu',
-        name: 'authMenu',
-        component: () => import('@/views/auth/menu/index.vue'),
-        meta: {
-          icon: 'AppstoreOutlined',
-          title: 'Menu Permissions',
-          isLink: '',
-          isHide: false,
-          isFull: false,
-          isAffix: false,
-          isKeepAlive: true,
-        },
-      },
-      {
-        path: '/auth/button',
-        name: 'authButton',
-        component: () => import('@/views/auth/button/index.vue'),
-        meta: {
-          icon: 'KeyOutlined',
-          title: 'Button Permissions',
           isLink: '',
           isHide: false,
           isFull: false,

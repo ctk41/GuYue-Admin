@@ -12,6 +12,7 @@
     "build:staging": "vue-tsc --noEmit && vite build --mode staging",
     "build:production": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
+    "lint:tsc": "vue-tsc --noEmit ",
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",

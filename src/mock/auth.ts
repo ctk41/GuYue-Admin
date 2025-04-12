@@ -28,4 +28,14 @@ export default [
       };
     },
   },
+  {
+    url: '/api/guyue/logout',
+    method: 'post',
+    response: () => {
+      return {
+        code: 200,
+        msg: '退出登录成功',
+      };
+    },
+  },
 ] as MockMethod[];

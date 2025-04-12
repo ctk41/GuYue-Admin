@@ -1,26 +1,33 @@
 import { RouteRecordRaw } from 'vue-router';
-import { HOME_URL, LOGIN_URL } from '@/config';
 import { staticMenu } from './staticMenu';
+import { transformMenuToRoutes } from '@/utils/util';
 
 export const staticRouter: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: HOME_URL,
+    redirect: '/home/index',
   },
   {
-    path: LOGIN_URL,
+    path: '/login',
     name: 'login',
     component: () => import('@/views/login/index.vue'),
     meta: {
-      title: '登录',
+      title: 'Login',
     },
   },
   {
     path: '/layout',
     name: 'layout',
     component: () => import('@/layouts/index.vue'),
-    redirect: HOME_URL,
-    children: [...staticMenu],
+    children: transformMenuToRoutes(staticMenu),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: () => import('@/views/error/404.vue'),
+    meta: {
+      title: '404',
+    },
   },
 ];
 

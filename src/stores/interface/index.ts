@@ -40,7 +40,6 @@ export interface TabsState {
 /* AuthState */
 export interface AuthState {
   routeName: string;
-  authMenuList: Menu.MenuOptions[];
   authButtonList: {
     [key: string]: string[];
   };

@@ -1,4 +1,5 @@
 import { isArray } from '@/utils/is';
+import { RouteRecordRaw } from 'vue-router';
 
 /**
  * @description Get localStorage
@@ -207,10 +208,13 @@ export const getKeepAliveRouterName = (menuList: Menu.MenuOptions[], keepAliveAr
  * @param {Array} menuList All menu list
  * @return array
  * */
-export const getShowMenuList = (menuList: Menu.MenuOptions[]) => {
+export const getShowMenuList = (menuList: Menu.MenuOptions[] = []) => {
+  if (!menuList || !Array.isArray(menuList)) return [];
   let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
   return newMenuList.filter(item => {
-    item.children?.length && (item.children = getShowMenuList(item.children));
+    if (item.children?.length) {
+      item.children = getShowMenuList(item.children);
+    }
     return !item.meta?.isHide;
   });
 };
@@ -359,4 +363,39 @@ export const transformDataToTree = (data: object[], idStr: string, pidStr: strin
  * */
 export const getSvgImage = (name: string) => {
   return new URL(`/src/assets/icons/${name}.svg`, import.meta.url).pathname;
+};
+
+/**
+ * Convert MenuOptions to RouteRecordRaw
+ * @param menuList MenuOptions array
+ * @returns RouteRecordRaw array
+ */
+export const transformMenuToRoutes = (menuList: Menu.MenuOptions[]): RouteRecordRaw[] => {
+  return menuList.map(item => {
+    const route: RouteRecordRaw = {
+      path: item.path,
+      name: item.name,
+      component: typeof item.component === 'string' ? () => import(`@/views${item.component}.vue`) : item.component,
+      meta: {
+        ...item.meta,
+        title: item.meta.title,
+        icon: item.meta.icon,
+        isLink: item.meta.isLink,
+        isHide: item.meta.isHide,
+        isFull: item.meta.isFull,
+        isAffix: item.meta.isAffix,
+        isKeepAlive: item.meta.isKeepAlive,
+      },
+    } as RouteRecordRaw;
+
+    if (item.redirect) {
+      route.redirect = item.redirect;
+    }
+
+    if (item.children && item.children.length > 0) {
+      route.children = transformMenuToRoutes(item.children);
+    }
+
+    return route;
+  });
 };

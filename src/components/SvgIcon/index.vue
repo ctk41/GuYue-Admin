@@ -6,6 +6,7 @@
 
 <script setup lang="ts" name="SvgIcon">
   import { CSSProperties, computed } from 'vue';
+  import { withDefaults, defineProps } from 'vue';
 
   interface SvgProps {
     name: string;
@@ -19,4 +20,10 @@
   });
 
   const symbolId = computed(() => `#${props.prefix}-${props.name}`);
+</script>
+
+<script lang="ts">
+  export default {
+    name: 'SvgIcon',
+  };
 </script>

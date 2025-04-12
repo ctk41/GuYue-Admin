@@ -6,10 +6,6 @@ export const loginApi = (params: Login.ReqLoginForm) => {
   return http.post<Login.ResLogin>(PORT + `/login`, params, { noLoading: true });
 };
 
-export const getAuthMenuListApi = () => {
-  return http.get<Menu.MenuOptions[]>(PORT + `/menu/list`, {}, { noLoading: true });
-};
-
 export const getAuthButtonListApi = () => {
   return http.get<Login.ResAuthButtons>(PORT + `/auth/buttons`, {}, { noLoading: true });
 };

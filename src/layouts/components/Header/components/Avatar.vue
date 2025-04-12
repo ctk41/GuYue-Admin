@@ -41,26 +41,44 @@
   import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
   import InfoDialog from './InfoDialog.vue';
   import PasswordDialog from './PasswordDialog.vue';
+  import { useTabsStore } from '@/stores/modules/tabs';
+  import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+  import { useAuthStore } from '@/stores/modules/auth';
+  import { useGlobalStore } from '@/stores/modules/global';
 
   const router = useRouter();
   const userStore = useUserStore();
 
   const logout = () => {
     Modal.confirm({
-      title: '温馨提示',
+      title: 'Friendly Reminder',
       icon: createVNode(ExclamationCircleOutlined),
-      content: '您是否确认退出登录？',
-      okText: '确定',
+      content: 'Are you sure you want to log out?',
+      okText: 'Confirm',
       okType: 'danger',
-      cancelText: '取消',
+      cancelText: 'Cancel',
       async onOk() {
         try {
           await logoutApi();
           userStore.setToken('');
+          userStore.setUserInfo({ name: '' });
+
+          const tabsStore = useTabsStore();
+          tabsStore.closeMultipleTab();
+
+          const keepAliveStore = useKeepAliveStore();
+          keepAliveStore.setKeepAliveName();
+
+          const authStore = useAuthStore();
+          authStore.setRouteName('');
+
+          const globalStore = useGlobalStore();
+          globalStore.setGlobalState('refreshPage', true);
+
           router.replace(LOGIN_URL);
-          message.success('退出登录成功！');
-        } catch {
-          message.success('退出登录失败！');
+          message.success('Logged out successfully!');
+        } catch (error) {
+          message.error('Failed to log out!');
         }
       },
       onCancel() {},

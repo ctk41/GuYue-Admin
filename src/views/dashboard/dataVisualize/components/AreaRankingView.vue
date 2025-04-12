@@ -8,7 +8,7 @@
   import { useEcharts } from '@/hooks/useEcharts';
 
   const echartsRef = ref<HTMLElement>();
-  const timeInter = ref<NodeJS.Timer | null>(null);
+  const timeInter = ref<NodeJS.Timeout | null>(null);
   onMounted(() => {
     let myChart: echarts.ECharts = echarts.init(echartsRef.value as HTMLElement);
     let nameList = ['广东省', '湖南省', '江西省', '广西省', '浙江省', '福建省', '湖北省', '重庆省', '云南省', '河南省'];
@@ -208,7 +208,7 @@
   });
 
   onUnmounted(() => {
-    timeInter.value && clearInterval(timeInter.value);
+    timeInter.value && clearInterval(timeInter.value as NodeJS.Timeout);
     timeInter.value = null;
   });
 </script>

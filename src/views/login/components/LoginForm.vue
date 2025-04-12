@@ -44,7 +44,6 @@
   import { useKeepAliveStore } from '@/stores/modules/keepAlive';
   import { getTimeState } from '@/utils/util';
   import { HOME_URL } from '@/config';
-  import { initDynamicRouter } from '@/routers/modules/dynamicRouter';
   import md5 from 'js-md5';
 
   const router = useRouter();
@@ -68,8 +67,6 @@
       try {
         const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
         userStore.setToken(data.access_token);
-
-        await initDynamicRouter();
 
         tabsStore.closeMultipleTab();
         keepAliveStore.setKeepAliveName();

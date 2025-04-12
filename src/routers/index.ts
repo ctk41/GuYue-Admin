@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useUserStore } from '@/stores/modules/user';
 import { useAuthStore } from '@/stores/modules/auth';
-import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
-import { initDynamicRouter } from '@/routers/modules/dynamicRouter';
+import { LOGIN_URL, ROUTER_WHITE_LIST, HOME_URL } from '@/config';
 import { staticRouter, errorRouter } from '@/routers/modules/staticRouter';
 import NProgress from '@/config/nprogress';
 
@@ -34,44 +33,32 @@ const router = createRouter({
  * */
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
+  const authStore = useAuthStore();
 
   NProgress.start();
 
   const title = import.meta.env.VITE_APP_TITLE;
   document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
 
-  if (to.path === LOGIN_URL) {
-    if (userStore.token) return next(from.fullPath);
-    resetRouter();
+  if (ROUTER_WHITE_LIST.includes(to.path)) {
     return next();
   }
 
-  if (ROUTER_WHITE_LIST.includes(to.path)) return next();
-
-  if (!userStore.token) return next({ path: LOGIN_URL, replace: true });
-
-  const authStore = useAuthStore();
-  authStore.setRouteName(to.name as string);
-  if (!authStore.authMenuListGet.length) {
-    await initDynamicRouter();
-    return next({ ...to, replace: true });
+  if (!userStore.token) {
+    if (to.path === LOGIN_URL) {
+      return next();
+    }
+    return next({ path: LOGIN_URL, replace: true });
   }
+
+  if (to.path === LOGIN_URL) {
+    return next(HOME_URL);
+  }
+
+  authStore.setRouteName(to.name as string);
 
   next();
 });
-
-/**
- * @description Reset router
- */
-export const resetRouter = () => {
-  const authStore = useAuthStore();
-  authStore.flatMenuListGet.forEach(route => {
-    const { name } = route;
-    if (name && router.hasRoute(name)) {
-      router.removeRoute(name);
-    }
-  });
-};
 
 /**
  * @description Router navigation complete

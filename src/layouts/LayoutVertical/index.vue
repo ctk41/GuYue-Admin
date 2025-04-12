@@ -14,7 +14,7 @@
           <span v-show="!isCollapse">VTI CORP</span>
         </div>
         <div class="scrollbar menu-scrollbar">
-          <a-menu v-model:selectedKeys="activeMenu" :theme="theme" mode="inline">
+          <a-menu :selectedKeys="activeMenu" :theme="theme" mode="inline">
             <SubMenu :menuList="menuList" />
           </a-menu>
         </div>
@@ -45,7 +45,10 @@
   const globalStore = useGlobalStore();
   const activeMenu = ref<Array<string>>([]);
   const isCollapse = computed(() => globalStore.isCollapse);
-  const menuList = computed(() => authStore.showMenuListGet);
+  const menuList = computed(() => {
+    console.log('Menu List:', authStore.showMenuListGet);
+    return authStore.showMenuListGet;
+  });
   const theme = computed(() => {
     return globalStore.styleSetting === 'realDark' ? 'dark' : globalStore.styleSetting;
   });

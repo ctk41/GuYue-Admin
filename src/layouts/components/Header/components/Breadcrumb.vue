@@ -10,10 +10,10 @@
           @click="onBreadcrumbClick(item, index)"
           :class="index === breadcrumbList.length - 1 ? 'a-breadcrumb__inner_last' : ''"
         >
-          <div class="breadcrumb-icon" v-show="item.meta.icon && globalStore.breadcrumbIcon">
+          <div class="breadcrumb-icon" v-show="item.meta && item.meta.icon && globalStore.breadcrumbIcon">
             <component :is="item.meta.icon"></component>
           </div>
-          <span class="breadcrumb-title">{{ item.meta.title }}</span>
+          <span class="breadcrumb-title">{{ item.meta ? item.meta.title : '' }}</span>
         </div>
       </a-breadcrumb-item>
     </a-breadcrumb>
@@ -34,15 +34,22 @@
   const globalStore = useGlobalStore();
 
   const breadcrumbList = computed(() => {
-    let breadcrumbData = authStore.breadcrumbListGet[route.matched[route.matched.length - 1].path] ?? [];
-    if (breadcrumbData[0].meta.title !== route.meta.title) {
+    const currentPath = route.matched[route.matched.length - 1]?.path;
+    if (!currentPath) return [];
+
+    let breadcrumbData = authStore.breadcrumbListGet[currentPath] || [];
+
+    if (breadcrumbData.length > 0 && breadcrumbData[0]?.meta?.title !== route.meta?.title) {
       breadcrumbData = [{ path: HOME_URL, meta: { icon: 'HomeFilled', title: '首页' } }, ...breadcrumbData];
     }
+
     return breadcrumbData;
   });
 
   const onBreadcrumbClick = (item: Menu.MenuOptions, index: number) => {
-    if (index !== breadcrumbList.value.length - 1) router.push(item.path);
+    if (index !== breadcrumbList.value.length - 1 && item.path) {
+      router.push(item.path);
+    }
   };
 </script>
 

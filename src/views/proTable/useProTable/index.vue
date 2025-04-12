@@ -4,17 +4,17 @@
       <template #searchForm="scope">
         <a-col :span="6">
           <a-form-item name="name" label="Name">
-            <a-input placeholder="placeholder" v-model:value="scope.formState['name']"></a-input>
+            <a-input placeholder="placeholder" v-model="scope.formState['name']"></a-input>
           </a-form-item>
         </a-col>
         <a-col :span="6">
           <a-form-item name="role" label="Role Type">
-            <GRoleSelect v-model:value="scope.formState['role']" />
+            <GRoleSelect v-model="scope.formState['role']" />
           </a-form-item>
         </a-col>
         <a-col :span="6">
           <a-form-item name="gender" label="Gender">
-            <a-select v-model:value="scope.formState['gender']">
+            <a-select v-model="scope.formState['gender']">
               <a-select-option :value="1">Male</a-select-option>
               <a-select-option :value="2">Female</a-select-option>
             </a-select>
@@ -22,7 +22,7 @@
         </a-col>
         <a-col :span="6">
           <a-form-item name="status" label="User Status">
-            <a-select v-model:value="scope.formState['status']">
+            <a-select v-model="scope.formState['status']">
               <a-select-option :value="0">Disabled</a-select-option>
               <a-select-option :value="1">Enabled</a-select-option>
             </a-select>
@@ -30,7 +30,7 @@
         </a-col>
         <a-col :span="6" v-show="scope.expand">
           <a-form-item name="createTime" label="Creation Time">
-            <a-range-picker v-model:value="scope.formState['createTime']" value-format="YYYY-MM-DD" />
+            <a-range-picker v-model="scope.formState['createTime']" value-format="YYYY-MM-DD" />
           </a-form-item>
         </a-col>
       </template>
@@ -66,7 +66,7 @@
       </template>
       <template #headerCell="{ column }">
         <template v-if="column.key === 'rolename'">
-          <TableFilter v-model:filter-value="rolenameValue" :options="options" :title="'Role Type'" />
+          <TableFilter v-model="rolenameValue" :options="options" :title="'Role Type'" />
         </template>
       </template>
       <template #expandedRowRender="{ record }">
@@ -246,23 +246,20 @@
       align: 'center',
     },
     {
-      title: 'User Status',
-      ellipsis: true,
-      key: 'status',
+      title: 'Status',
       dataIndex: 'status',
-      align: 'center',
-      customRender: ({ record }) => {
-        return BUTTONS.value.status ? (
-          <a-switch
-            v-model:checked={record.status}
-            checked-children='Enabled'
-            checkedValue={1}
-            un-checked-children='Disabled'
-            unCheckedValue={0}
-            onClick={() => changeStatus(record)}
-          />
-        ) : (
-          <a-tag color={record.status ? 'success' : 'error'}>{record.status ? 'Enabled' : 'Disabled'}</a-tag>
+      width: 120,
+      customRender: ({ record }: { record: User.ResUserList }) => {
+        return (
+          <div class='status'>
+            <a-switch
+              checked={record.status}
+              checkedChildren='Enabled'
+              unCheckedChildren='Disabled'
+              onChange={() => changeStatus(record)}
+            />
+            <a-tag color={record.status ? 'success' : 'error'}>{record.status ? 'Enabled' : 'Disabled'}</a-tag>
+          </div>
         );
       },
     },
