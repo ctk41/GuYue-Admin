@@ -6,18 +6,18 @@
 </template>
 
 <script setup lang="ts">
-import EmptySrc from '@/assets/images/empty.png';
+  import EmptySrc from '@/assets/images/empty.png';
 </script>
 
 <style scoped lang="less">
-.empty-wrapper {
-  img {
-    height: 60px;
+  .empty-wrapper {
+    img {
+      height: 60px;
+    }
+    p {
+      font-size: 14px;
+      color: #666666;
+      text-align: center;
+    }
   }
-  p {
-    font-size: 14px;
-    color: #666666;
-    text-align: center;
-  }
-}
 </style>

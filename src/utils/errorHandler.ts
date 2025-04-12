@@ -1,10 +1,6 @@
 import { notification } from 'ant-design-vue';
 
-/**
- * @description 全局代码错误捕捉
- * */
 const errorHandler = (error: any) => {
-  // 过滤 HTTP 请求错误
   if (error.status || error.status == 0) return false;
   let errorMap: { [key: string]: string } = {
     InternalError: 'Javascript引擎内部错误',

@@ -1,19 +1,15 @@
 import { ref } from 'vue';
 
-/**
- * @description 获取本地时间
- */
 export const useTime = () => {
-  const year = ref(0); // 年份
-  const month = ref(0); // 月份
-  const week = ref(''); // 星期几
-  const day = ref(0); // 天数
-  const hour = ref<number | string>(0); // 小时
-  const minute = ref<number | string>(0); // 分钟
-  const second = ref<number | string>(0); // 秒
-  const nowTime = ref<string>(''); // 当前时间
+  const year = ref(0);
+  const month = ref(0);
+  const week = ref('');
+  const day = ref(0);
+  const hour = ref<number | string>(0);
+  const minute = ref<number | string>(0);
+  const second = ref<number | string>(0);
+  const nowTime = ref<string>('');
 
-  // 更新时间
   const updateTime = () => {
     const date = new Date();
     year.value = date.getFullYear();

@@ -76,66 +76,59 @@
 </template>
 
 <script setup lang="ts" name="tabs">
-import { nextTick, ref } from 'vue';
-import { HOME_URL } from '@/config';
-import { useRoute, useRouter } from 'vue-router';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useGlobalStore } from '@/stores/modules/global';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+  import { nextTick, ref } from 'vue';
+  import { HOME_URL } from '@/config';
+  import { useRoute, useRouter } from 'vue-router';
+  import { useTabsStore } from '@/stores/modules/tabs';
+  import { useGlobalStore } from '@/stores/modules/global';
+  import { useKeepAliveStore } from '@/stores/modules/keepAlive';
 
-const route = useRoute();
-const router = useRouter();
-const tabStore = useTabsStore();
-const globalStore = useGlobalStore();
-const keepAliveStore = useKeepAliveStore();
+  const route = useRoute();
+  const router = useRouter();
+  const tabStore = useTabsStore();
+  const globalStore = useGlobalStore();
+  const keepAliveStore = useKeepAliveStore();
 
-// 刷新当前页面
-const refresh = () => {
-  setTimeout(() => {
+  const refresh = () => {
+    setTimeout(() => {
+      keepAliveStore.removeKeepAliveName(route.name as string);
+      globalStore.setGlobalState('refreshPage', false);
+      nextTick(() => {
+        keepAliveStore.addKeepAliveName(route.name as string);
+        globalStore.setGlobalState('refreshPage', true);
+      });
+    }, 0);
+  };
+
+  const maximize = () => {
+    globalStore.setGlobalState('maximize', true);
+  };
+
+  const closeCurrentTab = () => {
+    if (route.meta.isAffix) return;
+    tabStore.removeTabs(route.fullPath);
     keepAliveStore.removeKeepAliveName(route.name as string);
-    globalStore.setGlobalState('refreshPage', false);
-    nextTick(() => {
-      keepAliveStore.addKeepAliveName(route.name as string);
-      globalStore.setGlobalState('refreshPage', true);
-    });
-  }, 0);
-};
+  };
 
-// 当前页全屏
-const maximize = () => {
-  globalStore.setGlobalState('maximize', true);
-};
+  const closeOtherTab = () => {
+    tabStore.closeMultipleTab(route.fullPath);
+    keepAliveStore.setKeepAliveName([route.name] as string[]);
+  };
 
-// 关闭当前页
-const closeCurrentTab = () => {
-  if (route.meta.isAffix) return;
-  tabStore.removeTabs(route.fullPath);
-  keepAliveStore.removeKeepAliveName(route.name as string);
-};
+  const closeAllTab = () => {
+    tabStore.closeMultipleTab();
+    keepAliveStore.setKeepAliveName();
+    router.push(HOME_URL);
+  };
 
-// 关闭其他
-const closeOtherTab = () => {
-  tabStore.closeMultipleTab(route.fullPath);
-  keepAliveStore.setKeepAliveName([route.name] as string[]);
-};
+  const tabsTitle = ref('');
+  const editTabsTitle = () => {
+    tabStore.setTabsTitle(tabsTitle.value);
+  };
 
-// 全部关闭
-const closeAllTab = () => {
-  tabStore.closeMultipleTab();
-  keepAliveStore.setKeepAliveName();
-  router.push(HOME_URL);
-};
-
-// 设置 Tab 标题
-const tabsTitle = ref('');
-const editTabsTitle = () => {
-  tabStore.setTabsTitle(tabsTitle.value);
-};
-
-// 打开详情页
-const handleToDetail = (id: string) => {
-  router.push(`/assembly/tabs/detail/${id}`);
-};
+  const handleToDetail = (id: string) => {
+    router.push(`/assembly/tabs/detail/${id}`);
+  };
 </script>
 
 <style scoped lang="less"></style>

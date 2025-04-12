@@ -3,36 +3,36 @@ import { message } from 'ant-design-vue';
 export const checkStatus = (status: number): void => {
   switch (status) {
     case 400:
-      message.error('请求失败！请您稍后重试');
+      message.error('Request failed! Please try again later');
       break;
     case 401:
-      message.error('登录失效！请您重新登录');
+      message.error('Login expired! Please login again');
       break;
     case 403:
-      message.error('当前账号无权限访问！');
+      message.error('Current account has no access permission!');
       break;
     case 404:
-      message.error('你所访问的资源不存在！');
+      message.error('The resource you are accessing does not exist!');
       break;
     case 405:
-      message.error('请求方式错误！请您稍后重试');
+      message.error('Request method error! Please try again later');
       break;
     case 408:
-      message.error('请求超时！请您稍后重试');
+      message.error('Request timeout! Please try again later');
       break;
     case 500:
-      message.error('服务异常！');
+      message.error('Service exception!');
       break;
     case 502:
-      message.error('网关错误！');
+      message.error('Gateway error!');
       break;
     case 503:
-      message.error('服务不可用！');
+      message.error('Service unavailable!');
       break;
     case 504:
-      message.error('网关超时！');
+      message.error('Gateway timeout!');
       break;
     default:
-      message.error('请求失败！');
+      message.error('Request failed!');
   }
 };

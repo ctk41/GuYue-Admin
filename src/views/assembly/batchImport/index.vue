@@ -21,21 +21,21 @@
 </template>
 
 <script setup lang="ts" name="batchImport">
-import { ref } from 'vue';
-import { exportUserInfo, BatchAddUser } from '@/api/modules/user';
-import ImportExcel from '@/components/ImportExcel/index.vue';
+  import { ref } from 'vue';
+  import { exportUserInfo, BatchAddUser } from '@/api/modules/user';
+  import ImportExcel from '@/components/ImportExcel/index.vue';
 
-const importRef = ref();
-const batchAdd = () => {
-  let params = {
-    title: '数据',
-    tempApi: exportUserInfo,
-    importApi: BatchAddUser,
+  const importRef = ref();
+  const batchAdd = () => {
+    let params = {
+      title: '数据',
+      tempApi: exportUserInfo,
+      importApi: BatchAddUser,
+    };
+    importRef.value.acceptParams(params);
   };
-  importRef.value.acceptParams(params);
-};
 </script>
 
 <style scoped lang="less">
-@import url('./index.less');
+  @import url('./index.less');
 </style>

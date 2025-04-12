@@ -1,5 +1,4 @@
 <template>
-  <!-- Gitee / GitHub 访问量占比 -->
   <div ref="echartsRef" class="echarts"></div>
 </template>
 <script setup lang="ts" name="pie">
@@ -33,7 +32,7 @@ const initChart = (data: any) => {
       top: '4%',
       left: '2%',
       orient: 'vertical',
-      icon: 'circle', //图例形状
+      icon: 'circle',
       align: 'left',
       itemGap: 20,
       textStyle: {
@@ -89,11 +88,11 @@ const initChart = (data: any) => {
             colorStops: [
               {
                 offset: 0,
-                color: '#feb791', // 0% 处的颜色
+                color: '#feb791',
               },
               {
                 offset: 1,
-                color: '#fe8b4c', // 100% 处的颜色
+                color: '#fe8b4c',
               },
             ],
           },
@@ -106,11 +105,11 @@ const initChart = (data: any) => {
             colorStops: [
               {
                 offset: 0,
-                color: '#b898fd', // 0% 处的颜色
+                color: '#b898fd',
               },
               {
                 offset: 1,
-                color: '#8347fd', // 100% 处的颜色
+                color: '#8347fd',
               },
             ],
           },

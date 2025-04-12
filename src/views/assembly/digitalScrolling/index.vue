@@ -7,7 +7,6 @@
       message="【插件使用】 <CountUp ref='countUpRef' :end='2023' :options='{ prefix: '￥' }'></CountUp>"
       type="info"
     />
-    <!-- 插件使用 -->
     <div>
       <a-typography-title :level="2">
         <CountUp ref="countUpRef" :end="2023" :options="{ prefix: '￥' }"></CountUp>
@@ -51,13 +50,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import CountUp from '@/components/CountUp/index.vue';
+  import { ref } from 'vue';
+  import CountUp from '@/components/CountUp/index.vue';
 
-/* 数字滚动插件实例 */
-const countUpRef = ref();
+  const countUpRef = ref();
 </script>
 
 <style scoped lang="less">
-@import url('./index.less');
+  @import url('./index.less');
 </style>

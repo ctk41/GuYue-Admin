@@ -15,22 +15,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useGlobalStore } from '@/stores/modules/global';
-import { getBrowserLang } from '@/utils/util';
+  import { computed, onMounted } from 'vue';
+  import { useI18n } from 'vue-i18n';
+  import { useGlobalStore } from '@/stores/modules/global';
+  import { getBrowserLang } from '@/utils/util';
 
-const i18n = useI18n();
-const globalStore = useGlobalStore();
-const language = computed((): string => globalStore.language);
+  const i18n = useI18n();
+  const globalStore = useGlobalStore();
+  const language = computed((): string => globalStore.language);
 
-// 切换语言
-const handleSetLanguage = (lang: string) => {
-  i18n.locale.value = lang;
-  globalStore.setGlobalState('language', lang);
-};
+  const handleSetLanguage = (lang: string) => {
+    i18n.locale.value = lang;
+    globalStore.setGlobalState('language', lang);
+  };
 
-onMounted(() => {
-  handleSetLanguage(language.value || getBrowserLang());
-});
+  onMounted(() => {
+    handleSetLanguage(language.value || getBrowserLang());
+  });
 </script>

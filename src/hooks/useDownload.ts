@@ -1,12 +1,12 @@
 import { notification } from 'ant-design-vue';
 
 /**
- * @description 接收数据流生成 blob，创建链接，下载文件
- * @param {Function} api 导出表格的api方法 (必传)
- * @param {String} tempName 导出的文件名 (必传)
- * @param {Object} params 导出的参数 (默认{})
- * @param {Boolean} isNotify 是否有导出消息提示 (默认为 true)
- * @param {String} fileType 导出的文件格式 (默认为.xlsx)
+ * @description Receive data stream to generate blob, create link, and download file
+ * @param {Function} api API method for exporting table (required)
+ * @param {String} tempName Name of the exported file (required)
+ * @param {Object} params Export parameters (default {})
+ * @param {Boolean} isNotify Whether to show export notification (default true)
+ * @param {String} fileType Format of the exported file (default .xlsx)
  * */
 export const useDownload = async (
   api: (param: any) => Promise<any> | any,
@@ -17,8 +17,8 @@ export const useDownload = async (
 ) => {
   if (isNotify) {
     notification['warning']({
-      message: '温馨提示',
-      description: '如果数据庞大会导致下载缓慢哦，请您耐心等待！',
+      message: 'Friendly Reminder',
+      description: 'If the data is large, the download may be slow. Please be patient!',
       style: { borderRadius: '8px' },
       duration: 3,
     });
@@ -26,7 +26,6 @@ export const useDownload = async (
   try {
     const res = await api(params);
     const blob = new Blob([res]);
-    // 兼容 edge 不支持 createObjectURL 方法
     if ('msSaveOrOpenBlob' in navigator) return window.navigator.msSaveOrOpenBlob(blob, tempName + fileType);
     const blobUrl = window.URL.createObjectURL(blob);
     const exportFile = document.createElement('a');
@@ -35,7 +34,6 @@ export const useDownload = async (
     exportFile.href = blobUrl;
     document.body.appendChild(exportFile);
     exportFile.click();
-    // 去除下载对 url 的影响
     document.body.removeChild(exportFile);
     window.URL.revokeObjectURL(blobUrl);
   } catch (error) {

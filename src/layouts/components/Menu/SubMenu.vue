@@ -19,13 +19,13 @@
 </template>
 
 <script setup lang="ts" name="SubMenu">
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
 
-defineProps<{ menuList: Menu.MenuOptions[] }>();
+  defineProps<{ menuList: Menu.MenuOptions[] }>();
 
-const router = useRouter();
-const handleClickMenu = (subItem: Menu.MenuOptions) => {
-  if (subItem.meta.isLink) return window.open(subItem.meta.isLink, '_blank');
-  router.push(subItem.path);
-};
+  const router = useRouter();
+  const handleClickMenu = (subItem: Menu.MenuOptions) => {
+    if (subItem.meta.isLink) return window.open(subItem.meta.isLink, '_blank');
+    router.push(subItem.path);
+  };
 </script>

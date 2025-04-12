@@ -43,65 +43,59 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick } from 'vue';
-import { HOME_URL } from '@/config';
-import { useGlobalStore } from '@/stores/modules/global';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
-import { useRoute, useRouter } from 'vue-router';
+  import { nextTick } from 'vue';
+  import { HOME_URL } from '@/config';
+  import { useGlobalStore } from '@/stores/modules/global';
+  import { useTabsStore } from '@/stores/modules/tabs';
+  import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+  import { useRoute, useRouter } from 'vue-router';
 
-const route = useRoute();
-const router = useRouter();
-const tabsStore = useTabsStore();
-const globalStore = useGlobalStore();
-const keepAliveStore = useKeepAliveStore();
+  const route = useRoute();
+  const router = useRouter();
+  const tabsStore = useTabsStore();
+  const globalStore = useGlobalStore();
+  const keepAliveStore = useKeepAliveStore();
 
-// 刷新当前页面
-const refresh = () => {
-  setTimeout(() => {
+  const refresh = () => {
+    setTimeout(() => {
+      keepAliveStore.removeKeepAliveName(route.name as string);
+      globalStore.setGlobalState('refreshPage', false);
+      nextTick(() => {
+        keepAliveStore.addKeepAliveName(route.name as string);
+        globalStore.setGlobalState('refreshPage', true);
+      });
+    }, 0);
+  };
+
+  const maximize = () => {
+    globalStore.setGlobalState('maximize', true);
+  };
+
+  const closeCurrentTab = () => {
+    if (route.meta.isAffix) return;
+    tabsStore.removeTabs(route.fullPath);
     keepAliveStore.removeKeepAliveName(route.name as string);
-    globalStore.setGlobalState('refreshPage', false);
-    nextTick(() => {
-      keepAliveStore.addKeepAliveName(route.name as string);
-      globalStore.setGlobalState('refreshPage', true);
-    });
-  }, 0);
-};
+  };
 
-// 页面全屏
-const maximize = () => {
-  globalStore.setGlobalState('maximize', true);
-};
+  const closeOtherTab = () => {
+    tabsStore.closeMultipleTab(route.fullPath);
+    keepAliveStore.setKeepAliveName([route.name] as string[]);
+  };
 
-// 关闭当前
-const closeCurrentTab = () => {
-  // tab是否固定页面
-  if (route.meta.isAffix) return;
-  tabsStore.removeTabs(route.fullPath);
-  keepAliveStore.removeKeepAliveName(route.name as string);
-};
-
-// 关闭其他
-const closeOtherTab = () => {
-  tabsStore.closeMultipleTab(route.fullPath);
-  keepAliveStore.setKeepAliveName([route.name] as string[]);
-};
-
-// 关闭全部
-const closeAllTab = () => {
-  tabsStore.closeMultipleTab();
-  keepAliveStore.setKeepAliveName();
-  router.push(HOME_URL);
-};
+  const closeAllTab = () => {
+    tabsStore.closeMultipleTab();
+    keepAliveStore.setKeepAliveName();
+    router.push(HOME_URL);
+  };
 </script>
 
 <style scoped lang="less">
-.item-choice {
-  display: flex;
-  align-items: center;
-  height: 28px;
-  .title {
-    margin-left: 5px;
+  .item-choice {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    .title {
+      margin-left: 5px;
+    }
   }
-}
 </style>

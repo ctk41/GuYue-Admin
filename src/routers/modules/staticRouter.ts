@@ -1,9 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 import { HOME_URL, LOGIN_URL } from '@/config';
 
-/**
- * staticRouter(静态路由)
- */
 export const staticRouter: RouteRecordRaw[] = [
   {
     path: '/',
@@ -26,9 +23,6 @@ export const staticRouter: RouteRecordRaw[] = [
   },
 ];
 
-/**
- * errorRouter(错误页面路由)
- */
 export const errorRouter: RouteRecordRaw[] = [
   {
     path: '/403',
@@ -54,7 +48,6 @@ export const errorRouter: RouteRecordRaw[] = [
       title: '500页面',
     },
   },
-  // 解决刷新页面，路由警告
   {
     path: '/:pathMatch(.*)*',
     component: () => import('@/components/ErrorMessage/404.vue'),

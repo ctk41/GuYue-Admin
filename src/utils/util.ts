@@ -1,62 +1,62 @@
 import { isArray } from '@/utils/is';
 
 /**
- * @description 获取localStorage
- * @param {String} key Storage名称
+ * @description Get localStorage
+ * @param {String} key Storage name
  * @return string
  */
-export function localGet(key: string) {
+export const localGet = (key: string) => {
   const value = window.localStorage.getItem(key);
   try {
     return JSON.parse(window.localStorage.getItem(key) as string);
   } catch (error) {
     return value;
   }
-}
+};
 
 /**
- * @description 存储localStorage
- * @param {String} key Storage名称
- * @param {Any} value Storage值
+ * @description Store to localStorage
+ * @param {String} key Storage name
+ * @param {Any} value Storage value
  * @return void
  */
-export function localSet(key: string, value: any) {
+export const localSet = (key: string, value: any) => {
   window.localStorage.setItem(key, JSON.stringify(value));
-}
+};
 
 /**
- * @description 清除localStorage
- * @param {String} key Storage名称
+ * @description Remove from localStorage
+ * @param {String} key Storage name
  * @return void
  */
-export function localRemove(key: string) {
+export const localRemove = (key: string) => {
   window.localStorage.removeItem(key);
-}
+};
 
 /**
- * @description 清除所有localStorage
+ * @description Clear all localStorage
  * @return void
  */
-export function localClear() {
+export const localClear = () => {
   window.localStorage.clear();
-}
+};
 
 /**
- * @description 判断数据类型
- * @param {Any} val 需要判断类型的数据
+ * @description Determine data type
+ * @param {Any} val Data to determine type
  * @return string
  */
-export function isType(val: any) {
+export const isType = (val: any) => {
   if (val === null) return 'null';
   if (typeof val !== 'object') return typeof val;
   else return Object.prototype.toString.call(val).slice(8, -1).toLocaleLowerCase();
-}
+};
 
 /**
- * @description 生成唯一 uuid
+ * @description Generate unique UUID
  * @return string
  */
-export function generateUUID() {
+export const generateUUID = () => {
   if (typeof crypto === 'object') {
     if (typeof crypto.randomUUID === 'function') {
       return crypto.randomUUID();
@@ -82,15 +82,15 @@ export function generateUUID() {
     }
     return (c === 'x' ? random : (random & 0x3) | 0x8).toString(16);
   });
-}
+};
 
 /**
- * 判断两个对象是否相同
- * @param a 要比较的对象一
- * @param b 要比较的对象二
- * @returns 相同返回 true，反之则反
+ * Determine if two objects are equal
+ * @param a First object to compare
+ * @param b Second object to compare
+ * @returns True if equal, false otherwise
  */
-export function isObjectValueEqual(a: { [key: string]: any }, b: { [key: string]: any }) {
+export const isObjectValueEqual = (a: { [key: string]: any }, b: { [key: string]: any }) => {
   if (!a || !b) return false;
   let aProps = Object.getOwnPropertyNames(a);
   let bProps = Object.getOwnPropertyNames(b);
@@ -107,41 +107,41 @@ export function isObjectValueEqual(a: { [key: string]: any }, b: { [key: string]
     }
   }
   return true;
-}
+};
 
 /**
- * @description 生成随机数
- * @param {Number} min 最小值
- * @param {Number} max 最大值
+ * @description Generate random number
+ * @param {Number} min Minimum value
+ * @param {Number} max Maximum value
  * @return number
  */
-export function randomNum(min: number, max: number): number {
+export const randomNum = (min: number, max: number): number => {
   let num = Math.floor(Math.random() * (min - max) + max);
   return num;
-}
+};
 
 /**
- * @description 获取当前时间对应的提示语
+ * @description Get greeting based on current time
  * @return string
  */
-export function getTimeState() {
-  // 获取当前时间
+export const getTimeState = () => {
+  // Get current time
   let timeNow = new Date();
-  // 获取当前小时
+  // Get current hour
   let hours = timeNow.getHours();
-  // 判断当前时间段
-  if (hours >= 6 && hours <= 10) return `早上好 ⛅`;
-  if (hours >= 10 && hours <= 14) return `中午好 🌞`;
-  if (hours >= 14 && hours <= 18) return `下午好 🌞`;
-  if (hours >= 18 && hours <= 24) return `晚上好 🌛`;
-  if (hours >= 0 && hours <= 6) return `凌晨好 🌛`;
-}
+  // Determine current time period
+  if (hours >= 6 && hours <= 10) return `Good morning ⛅`;
+  if (hours >= 10 && hours <= 14) return `Good noon 🌞`;
+  if (hours >= 14 && hours <= 18) return `Good afternoon 🌞`;
+  if (hours >= 18 && hours <= 24) return `Good evening 🌛`;
+  if (hours >= 0 && hours <= 6) return `Good night 🌛`;
+};
 
 /**
- * @description 获取浏览器默认语言
+ * @description Get browser default language
  * @return string
  */
-export function getBrowserLang() {
+export const getBrowserLang = () => {
   let browserLang = navigator.language ? navigator.language : navigator.browserLanguage;
   let defaultBrowserLang = '';
   if (
@@ -154,15 +154,15 @@ export function getBrowserLang() {
     defaultBrowserLang = 'en';
   }
   return defaultBrowserLang;
-}
+};
 
 /**
- * @description 递归查询当前路由所对应的路由
- * @param {Array} menuList 所有菜单列表
- * @param {String} path 当前访问地址
+ * @description Recursively search for the route corresponding to the current route
+ * @param {Array} menuList All menu list
+ * @param {String} path Current access address
  * @return array
  */
-export function filterCurrentRoute(menuList: Menu.MenuOptions[], path: string) {
+export const filterCurrentRoute = (menuList: Menu.MenuOptions[], path: string) => {
   let result = {};
   for (let item of menuList) {
     if (item.path === path) return item;
@@ -172,68 +172,68 @@ export function filterCurrentRoute(menuList: Menu.MenuOptions[], path: string) {
     }
   }
   return result;
-}
+};
 
 /**
- * @description 扁平化数组对象(主要用来处理路由菜单)
- * @param {Array} menuList 所有菜单列表
+ * @description Flatten array objects (mainly used to process route menus)
+ * @param {Array} menuList All menu list
  * @return array
  */
-export function getFlatArr(menuList: Menu.MenuOptions[]) {
+export const getFlatArr = (menuList: Menu.MenuOptions[]) => {
   let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
   return newMenuList.reduce((pre: Menu.MenuOptions[], current: Menu.MenuOptions) => {
     let flatArr = [...pre, current];
     if (current.children) flatArr = [...flatArr, ...getFlatArr(current.children)];
     return flatArr;
   }, []);
-}
+};
 
 /**
- * @description 使用递归，过滤需要缓存的路由（暂时没有使用）
- * @param {Array} menuList 所有菜单列表
- * @param {Array} cacheArr 缓存的路由菜单 name ['**','**']
+ * @description Use recursion to filter routes that need to be cached (currently not used)
+ * @param {Array} menuList All menu list
+ * @param {Array} cacheArr Cached route menu names ['**','**']
  * @return array
  * */
-export function getKeepAliveRouterName(menuList: Menu.MenuOptions[], keepAliveArr: string[] = []) {
+export const getKeepAliveRouterName = (menuList: Menu.MenuOptions[], keepAliveArr: string[] = []) => {
   menuList.forEach(item => {
     item.meta.isKeepAlive && item.name && keepAliveArr.push(item.name);
     item.children?.length && getKeepAliveRouterName(item.children, keepAliveArr);
   });
   return keepAliveArr;
-}
+};
 
 /**
- * @description 使用递归，过滤出需要渲染在左侧菜单的列表（剔除 isHide == true 的菜单）
- * @param {Array} menuList 所有菜单列表
+ * @description Use recursion to filter out lists that need to be rendered in the left menu (excludes menus with isHide == true)
+ * @param {Array} menuList All menu list
  * @return array
  * */
-export function getShowMenuList(menuList: Menu.MenuOptions[]) {
+export const getShowMenuList = (menuList: Menu.MenuOptions[]) => {
   let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
   return newMenuList.filter(item => {
     item.children?.length && (item.children = getShowMenuList(item.children));
     return !item.meta?.isHide;
   });
-}
+};
 
 /**
- * @description 使用递归处理路由菜单 path，生成一维数组(第一版本地路由鉴权会用到)
- * @param {Array} menuList 所有菜单列表
- * @param {Array} menuPathArr 菜单地址的一维数组 ['**','**']
+ * @description Use recursion to process route menu paths and generate a one-dimensional array (used in first version local route authentication)
+ * @param {Array} menuList All menu list
+ * @param {Array} menuPathArr One-dimensional array of menu addresses ['**','**']
  * @return array
  */
-export function getMenuListPath(menuList: Menu.MenuOptions[], menuPathArr: string[] = []) {
+export const getMenuListPath = (menuList: Menu.MenuOptions[], menuPathArr: string[] = []) => {
   menuList.forEach((item: Menu.MenuOptions) => {
     typeof item === 'object' && item.path && menuPathArr.push(item.path);
     item.children?.length && getMenuListPath(item.children, menuPathArr);
   });
   return menuPathArr;
-}
+};
 
 /**
- * @description 递归找出所有面包屑存储到 pinia/vuex 中
- * @param {Array} menuList 所有菜单列表
- * @param {Object} result 输出的结果
- * @param {Array} parent 父级菜单
+ * @description Recursively find all breadcrumbs and store in pinia/vuex
+ * @param {Array} menuList All menu list
+ * @param {Object} result Output result
+ * @param {Array} parent Parent menu
  * @returns object
  */
 export const getAllBreadcrumbList = (
@@ -249,111 +249,111 @@ export const getAllBreadcrumbList = (
 };
 
 /**
- * @description 格式化表格单元格默认值(a-table-column)
- * @param {Number} row 行
- * @param {Number} col 列
- * @param {String} callValue 当前单元格值
+ * @description Format table cell default values (a-table-column)
+ * @param {Number} row Row
+ * @param {Number} col Column
+ * @param {String} callValue Current cell value
  * @return string
  * */
-export function defaultFormat(row: number, col: number, callValue: any) {
-  // 如果当前值为数组,使用 / 拼接（根据需求自定义）
+export const defaultFormat = (row: number, col: number, callValue: any) => {
+  // If current value is an array, join with / (customize according to requirements)
   if (isArray(callValue)) return callValue.length ? callValue.join(' / ') : '--';
   return callValue ?? '--';
-}
+};
 
 /**
- * @description 处理无数据情况
- * @param {String} callValue 需要处理的值
+ * @description Handle no data situation
+ * @param {String} callValue Value to process
  * @return string
  * */
-export function formatValue(callValue: any) {
-  // 如果当前值为数组,使用 / 拼接（根据需求自定义）
+export const formatValue = (callValue: any) => {
+  // If current value is an array, join with / (customize according to requirements)
   if (isArray(callValue)) return callValue.length ? callValue.join(' / ') : '--';
   return callValue ?? '--';
-}
+};
 
 /**
- * @description 处理 prop 为多级嵌套的情况(列如: prop:user.name)
- * @param {Object} row 当前行数据
- * @param {String} prop 当前 prop
+ * @description Handle prop for multi-level nesting (e.g., prop:user.name)
+ * @param {Object} row Current row data
+ * @param {String} prop Current prop
  * @return any
  * */
-export function handleRowAccordingToProp(row: { [key: string]: any }, prop: string) {
+export const handleRowAccordingToProp = (row: { [key: string]: any }, prop: string) => {
   if (!prop.includes('.')) return row[prop] ?? '--';
   prop.split('.').forEach(item => (row = row[item] ?? '--'));
   return row;
-}
+};
 
 /**
- * @description 处理 prop，当 prop 为多级嵌套时 ==> 返回最后一级 prop
- * @param {String} prop 当前 prop
+ * @description Process prop, when prop is multi-level nested ==> return the last level prop
+ * @param {String} prop Current prop
  * @return string
  * */
-export function handleProp(prop: string) {
+export const handleProp = (prop: string) => {
   const propArr = prop.split('.');
   if (propArr.length == 1) return prop;
   return propArr[propArr.length - 1];
-}
+};
 
 /**
- * @description 根据枚举列表查询当需要的数据（如果指定了 label 和 value 的 key值，会自动识别格式化）
- * @param {String} callValue 当前单元格值
- * @param {Array} enumData 字典列表
- * @param {Array} fieldNames 指定 label && value 的 key 值
- * @param {String} type 过滤类型（目前只有 tag）
+ * @description Query required data based on enumeration list (if label and value key values are specified, format will be automatically recognized)
+ * @param {String} callValue Current cell value
+ * @param {Array} enumData Dictionary list
+ * @param {Array} fieldNames Specify label and value key values
+ * @param {String} type Filter type (currently only tag)
  * @return string
  * */
-export function filterEnum(
+export const filterEnum = (
   callValue: any,
   enumData: any[] | undefined,
   fieldNames?: { label: string; value: string },
   type?: string,
-): string {
+): string => {
   const value = fieldNames?.value ?? 'value';
   const label = fieldNames?.label ?? 'label';
   let filterData: { [key: string]: any } = {};
   if (Array.isArray(enumData)) filterData = enumData.find((item: any) => item[value] === callValue);
   if (type == 'tag') return filterData?.tagType ? filterData.tagType : '';
   return filterData ? filterData[label] : '--';
-}
+};
 
 /**
- * @description 转换函数transformDataToTree
- * @param {String} idStr  data唯一标识
- * @param {Array} pidStr  父节点标识
+ * @description Transform data to tree function
+ * @param {String} idStr Data unique identifier
+ * @param {Array} pidStr Parent node identifier
  * @return Array tree object
  * */
-export function transformDataToTree(data: object[], idStr: string, pidStr: string): any[] {
+export const transformDataToTree = (data: object[], idStr: string, pidStr: string): any[] => {
   let tree: any = [];
   if (!isArray(data)) {
     return [];
   }
-  // 将数组转换成对象（键值对），将ID作为属性名，原来的数组里的对象作为属性值
+  // Convert array to object (key-value pair), using ID as property name and original array object as property value
   let map: any = {};
   data.forEach((item: any) => {
     map[item[idStr]] = item;
   });
-  // 通过对象的属性名（ID）来找到父级节点，将存到map里的对象取出来放到父级节点的childere数组中
+  // Use object property name (ID) to find parent node, extract object stored in map and place in parent node's children array
   data.forEach((item: any) => {
     let parent = map[item[pidStr]];
 
-    // 修改对象属性
+    // Modify object property
     delete item[pidStr];
 
     if (parent) {
-      // 如果 map[item.pid] 有值 则 parent 为 item 的父级
-      // 判断 parent 里有无children 如果没有则创建 如果有则直接把 item push到children里
+      // If map[item.pid] has value, then parent is item's parent
+      // Check if parent has children, if not create it, if yes push item to children
       (parent.children || (parent.children = [])).push(item);
     } else {
-      // 如果 map[item.pid] 找不到值 说明此 item 为 第一级
+      // If map[item.pid] cannot find value, this item is first level
       tree.push(item);
     }
   });
   return tree;
-}
+};
 
 /**
- * @description 动态引入svg图片
+ * @description Dynamically import SVG images
  * @param {String} name
  * @return
  * */

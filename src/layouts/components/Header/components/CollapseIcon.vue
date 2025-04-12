@@ -8,19 +8,18 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '@/stores/modules/global';
+  import { useGlobalStore } from '@/stores/modules/global';
 
-const globalStore = useGlobalStore();
-// 点击菜单Icon
-const collapse = () => {
-  globalStore.setGlobalState('isCollapse', !globalStore.isCollapse);
-};
+  const globalStore = useGlobalStore();
+  const collapse = () => {
+    globalStore.setGlobalState('isCollapse', !globalStore.isCollapse);
+  };
 </script>
 
 <style scoped lang="less">
-.collapse-icon {
-  margin-right: 20px;
-  font-size: 22px;
-  cursor: pointer;
-}
+  .collapse-icon {
+    margin-right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+  }
 </style>

@@ -6,17 +6,17 @@
 </template>
 
 <script setup lang="ts" name="SwitchDark">
-import { ref } from 'vue';
-import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { ref } from 'vue';
+  import SvgIcon from '@/components/SvgIcon/index.vue';
 
-const checked1 = ref(false);
+  const checked1 = ref(false);
 </script>
 
 <style scoped lang="less">
-.switch-dark {
-  :global(.ant-switch-inner) {
-    display: flex;
-    align-items: center;
+  .switch-dark {
+    :global(.ant-switch-inner) {
+      display: flex;
+      align-items: center;
+    }
   }
-}
 </style>

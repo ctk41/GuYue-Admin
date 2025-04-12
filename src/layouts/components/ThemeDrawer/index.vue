@@ -6,7 +6,6 @@
     width="300"
     :bodyStyle="{ paddingTop: 0 }"
   >
-    <!-- 风格设置 -->
     <a-divider
       ><a-space><fire-outlined />风格设置</a-space></a-divider
     >
@@ -39,7 +38,6 @@
         </div>
       </a-tooltip>
     </div>
-    <!-- 布局切换 -->
     <a-divider
       ><a-space><qrcode-outlined />布局切换</a-space></a-divider
     >
@@ -81,7 +79,6 @@
         </div>
       </a-tooltip>
     </div>
-    <!-- 全局主题 -->
     <a-divider
       ><a-space> <SvgIcon name="cold-drink" />全局主题 </a-space></a-divider
     >
@@ -97,7 +94,6 @@
       <span>色弱模式</span>
       <a-switch v-model:checked="isWeak" size="small" class="switch-btn" @change="changeGreyOrWeak($event, 'weak')" />
     </div>
-    <!-- 界面设置 -->
     <a-divider
       ><a-space><setting-outlined />界面设置</a-space></a-divider
     >
@@ -129,63 +125,60 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { storeToRefs } from 'pinia';
-import mittBus from '@/utils/mittBus';
-import { useTheme } from '@/hooks/useTheme';
-import { useGlobalStore } from '@/stores/modules/global';
-import { LayoutType, StyleType } from '@/stores/interface';
-import { DEFAULT_PRIMARY } from '@/config';
-import ThemeColor from '@/components/ThemeColor/index.vue';
-import SvgIcon from '@/components/SvgIcon/index.vue';
+  import { ref, watch } from 'vue';
+  import { storeToRefs } from 'pinia';
+  import mittBus from '@/utils/mittBus';
+  import { useTheme } from '@/hooks/useTheme';
+  import { useGlobalStore } from '@/stores/modules/global';
+  import { LayoutType, StyleType } from '@/stores/interface';
+  import { DEFAULT_PRIMARY } from '@/config';
+  import ThemeColor from '@/components/ThemeColor/index.vue';
+  import SvgIcon from '@/components/SvgIcon/index.vue';
 
-const { changeGreyOrWeak } = useTheme();
+  const { changeGreyOrWeak } = useTheme();
 
-const globalStore = useGlobalStore();
-const {
-  styleSetting,
-  layout,
-  primary,
-  isGrey,
-  isWeak,
-  isCollapse,
-  breadcrumb,
-  breadcrumbIcon,
-  tabs,
-  tabsIcon,
-  footer,
-} = storeToRefs(globalStore);
+  const globalStore = useGlobalStore();
+  const {
+    styleSetting,
+    layout,
+    primary,
+    isGrey,
+    isWeak,
+    isCollapse,
+    breadcrumb,
+    breadcrumbIcon,
+    tabs,
+    tabsIcon,
+    footer,
+  } = storeToRefs(globalStore);
 
-const colors = ref([DEFAULT_PRIMARY, '#F5222D', '#FA541C', '#FAAD14', '#13C2C2', '#52C41A', '#1890FF', '#722ED1']);
-const colorNames = ref(['极客蓝(默认)', '薄暮', '火山', '日暮', '明青', '极光绿', '拂晓蓝', '酱紫']);
+  const colors = ref([DEFAULT_PRIMARY, '#F5222D', '#FA541C', '#FAAD14', '#13C2C2', '#52C41A', '#1890FF', '#722ED1']);
+  const colorNames = ref(['极客蓝(默认)', '薄暮', '火山', '日暮', '明青', '极光绿', '拂晓蓝', '酱紫']);
 
-// 切换主题
-const changeTheme = (val: StyleType) => {
-  if (val === 'realDark') return;
-  globalStore.setGlobalState('styleSetting', val);
-};
-// 切换布局方式
-const changeLayout = (val: LayoutType) => {
-  if (val === 'classic') return;
-  if (val === 'columns') return;
-  globalStore.setGlobalState('layout', val);
-};
+  const changeTheme = (val: StyleType) => {
+    if (val === 'realDark') return;
+    globalStore.setGlobalState('styleSetting', val);
+  };
 
-// 监听布局变化，在 body 上添加相对应的 layout class
-watch(
-  () => layout,
-  () => {
-    const body = document.body as HTMLElement;
-    body.setAttribute('class', layout.value);
-  },
-  { immediate: true },
-);
+  const changeLayout = (val: LayoutType) => {
+    if (val === 'classic') return;
+    if (val === 'columns') return;
+    globalStore.setGlobalState('layout', val);
+  };
 
-// 打开主题设置
-const drawerVisible = ref(false);
-mittBus.on('openThemeDrawer', () => (drawerVisible.value = true));
+  watch(
+    () => layout,
+    () => {
+      const body = document.body as HTMLElement;
+      body.setAttribute('class', layout.value);
+    },
+    { immediate: true },
+  );
+
+  const drawerVisible = ref(false);
+  mittBus.on('openThemeDrawer', () => (drawerVisible.value = true));
 </script>
 
 <style scoped lang="less">
-@import url('./index.less');
+  @import url('./index.less');
 </style>

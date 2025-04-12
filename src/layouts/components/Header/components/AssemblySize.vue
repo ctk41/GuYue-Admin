@@ -19,22 +19,22 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from 'vue';
-import { useGlobalStore } from '@/stores/modules/global';
-import { AssemblySizeType } from '@/stores/interface';
+  import { reactive, computed } from 'vue';
+  import { useGlobalStore } from '@/stores/modules/global';
+  import { AssemblySizeType } from '@/stores/interface';
 
-const globalStore = useGlobalStore();
-const assemblySize = computed(() => globalStore.assemblySize);
+  const globalStore = useGlobalStore();
+  const assemblySize = computed(() => globalStore.assemblySize);
 
-const assemblySizeList: AssemblySizeType[] = ['middle', 'large', 'small'];
-const assemblySizeListCh = reactive<{ [key: string]: string }>({
-  middle: '默认',
-  large: '大型',
-  small: '小型',
-});
+  const assemblySizeList: AssemblySizeType[] = ['middle', 'large', 'small'];
+  const assemblySizeListCh = reactive<{ [key: string]: string }>({
+    middle: '默认',
+    large: '大型',
+    small: '小型',
+  });
 
-const setAssemblySize = (item: AssemblySizeType) => {
-  if (assemblySize.value === item) return;
-  globalStore.setGlobalState('assemblySize', item);
-};
+  const setAssemblySize = (item: AssemblySizeType) => {
+    if (assemblySize.value === item) return;
+    globalStore.setGlobalState('assemblySize', item);
+  };
 </script>

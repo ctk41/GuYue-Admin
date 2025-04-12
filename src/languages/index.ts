@@ -3,9 +3,9 @@ import zh_CN from './modules/zh_CN';
 import en from './modules/en';
 
 const i18n = createI18n({
-  legacy: false, // 如果要支持 compositionAPI，此项必须设置为 false
-  locale: 'zh_CN', // 设置语言类型
-  globalInjection: true, // 全局注册$t方法
+  legacy: false,
+  locale: 'zh_CN',
+  globalInjection: true,
   messages: {
     zh_CN,
     en,

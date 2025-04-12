@@ -16,6 +16,12 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSaveTimeout": 5000,
+  "editor.formatOnSaveIgnore": [
+    "*.vue"
+  ],
   "files.autoSave": "onFocusChange",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
@@ -216,7 +222,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

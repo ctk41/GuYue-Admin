@@ -1,17 +1,16 @@
 <template>
-  <a-modal v-model:visible="visible" :title="`批量添加${parameter.title}`" :footer="null" width="580px">
+  <a-modal v-model:visible="visible" :title="`Batch Add ${parameter.title}`" :footer="null" width="580px">
     <a-form>
-      <!-- 模板下载 -->
-      <a-form-item label="模板下载 :">
+      <a-form-item label="Template Download:">
         <a-button type="primary" @click="downloadTemp">
           <template #icon>
             <DownloadOutlined />
           </template>
-          点击下载
+          Download
         </a-button>
       </a-form-item>
-      <!-- 文件上传 -->
-      <a-form-item label="文件上传 :">
+
+      <a-form-item label="File Upload:">
         <a-upload-dragger
           name="file"
           :multiple="true"
@@ -26,12 +25,14 @@
           <p class="ant-upload-drag-icon">
             <cloud-upload-outlined />
           </p>
-          <p class="ant-upload-text">将文件拖到此处，或<em>点击上传</em></p>
+          <p class="ant-upload-text">Drag files here, or <em>click to upload</em></p>
         </a-upload-dragger>
-        <div class="a-upload__tip">请上传 .xls , .xlsx 标准格式文件，文件最大为 {{ parameter.fileSize }}M</div>
+        <div class="a-upload__tip">
+          Please upload .xls or .xlsx standard format files, maximum file size is {{ parameter.fileSize }}M
+        </div>
       </a-form-item>
-      <!-- 数据覆盖 -->
-      <a-form-item label="数据覆盖 :">
+
+      <a-form-item label="Data Override:">
         <a-switch v-model:checked="isCover" />
       </a-form-item>
     </a-form>
@@ -39,131 +40,125 @@
 </template>
 
 <script setup lang="ts" name="importExcel">
-import { ref } from 'vue';
-import { useDownload } from '@/hooks/useDownload';
-import { UploadChangeParam, notification } from 'ant-design-vue';
+  import { ref } from 'vue';
+  import { useDownload } from '@/hooks/useDownload';
+  import { UploadChangeParam, notification } from 'ant-design-vue';
 
-/* 接口 */
-export interface ExcelParameterProps {
-  title: string; // 标题
-  fileSize?: number; // 上传文件的大小
-  fileType?: File.ExcelMimeType[]; // 上传文件的类型
-  tempApi?: (params: any) => Promise<any>; // 下载模板的Api
-  importApi?: (params: any) => Promise<any>; // 批量导入的Api
-  getTableList?: () => void; // 获取表格数据的Api
-}
-/* 是否覆盖数据 */
-const isCover = ref(false);
-/* 最大文件上传数 */
-const excelLimit = ref(1);
-/* 弹窗状态 */
-const visible = ref(false);
-/* 限制弹框 M4-38464 */
-let limitMessage: boolean = true;
-/* 父组件传过来的参数 */
-const parameter = ref<ExcelParameterProps>({
-  title: '',
-  fileSize: 5,
-  fileType: ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
-});
-/* 接受父组件参数 */
-const acceptParams = (params: ExcelParameterProps) => {
-  parameter.value = { ...parameter.value, ...params };
-  visible.value = true;
-};
-/* Excel 导入模板下载 */
-const downloadTemp = () => {
-  if (!parameter.value.tempApi) return;
-  useDownload(parameter.value.tempApi, `${parameter.value.title}模板`);
-};
-/* 文件上传 */
-const uploadExcel = async (e: any) => {
-  try {
-    let excelFormData = new FormData();
-    excelFormData.append('file', e.file);
-    excelFormData.append('isCover', isCover.value as unknown as Blob);
-    let res = await parameter.value.importApi!(excelFormData);
-    // 调用实例的成功方法通知组件该文件上传成功
-    e.onSuccess(res.data, e);
-    // 重新刷新表格
-    parameter.value.getTableList && parameter.value.getTableList();
-    visible.value = false;
-  } catch (error) {
-    // 调用实例的失败方法通知组件该文件上传失败
-    e.onError(error);
+  export interface ExcelParameterProps {
+    title: string;
+    fileSize?: number;
+    fileType?: File.ExcelMimeType[];
+    tempApi?: (params: any) => Promise<any>;
+    importApi?: (params: any) => Promise<any>;
+    getTableList?: () => void;
   }
-};
-/**
- * @description 文件上传之前判断
- * @param file 上传的文件
- */
-const beforeExcelUpload = async (file: any, fileList: any) => {
-  const isExcel = parameter.value.fileType!.includes(file.type as File.ExcelMimeType);
-  const fileSize = file.size / 1024 / 1024 < parameter.value.fileSize!;
-  const fileAmount = fileList.length >= 2 ? false : true;
-  if (!isExcel) {
-    notification['warning']({
-      message: '温馨提示',
-      description: '上传文件只能是 xls / xlsx 格式！',
-      style: { borderRadius: '8px' },
-      duration: 3,
-    });
-  }
-  if (!fileSize) {
-    setTimeout(() => {
-      notification['warning']({
-        message: '温馨提示',
-        description: `上传文件大小不能超过 ${parameter.value.fileSize}MB！`,
-        style: { borderRadius: '8px' },
-        duration: 3,
-      });
-    }, 0);
-  }
-  if (!fileAmount) {
-    if (limitMessage) {
-      notification['warning']({
-        message: '温馨提示',
-        description: '最多只能上传一个文件！',
-        style: { borderRadius: '8px' },
-        duration: 3,
-      });
-      limitMessage = false;
-      setTimeout(() => {
-        limitMessage = true;
-      }, 1000);
+
+  const isCover = ref(false);
+  const excelLimit = ref(1);
+  const visible = ref(false);
+  let limitMessage: boolean = true;
+
+  const parameter = ref<ExcelParameterProps>({
+    title: '',
+    fileSize: 5,
+    fileType: ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+  });
+
+  const acceptParams = (params: ExcelParameterProps) => {
+    parameter.value = { ...parameter.value, ...params };
+    visible.value = true;
+  };
+
+  const downloadTemp = () => {
+    if (!parameter.value.tempApi) return;
+    useDownload(parameter.value.tempApi, `${parameter.value.title} Template`);
+  };
+
+  const uploadExcel = async (e: any) => {
+    try {
+      let excelFormData = new FormData();
+      excelFormData.append('file', e.file);
+      excelFormData.append('isCover', isCover.value as unknown as Blob);
+      let res = await parameter.value.importApi!(excelFormData);
+      e.onSuccess(res.data, e);
+      parameter.value.getTableList && parameter.value.getTableList();
+      visible.value = false;
+    } catch (error) {
+      e.onError(error);
     }
-  }
-  return isExcel && fileSize && fileAmount;
-};
-/* 上传文件改变时的状态 */
-const handleChange = (info: UploadChangeParam) => {
-  const { status } = info.file;
-  if (status === 'done') {
-    excelUploadSuccess();
-  } else if (status === 'error') {
-    excelUploadError();
-  }
-};
-/* 上传错误提示 */
-const excelUploadError = (): void => {
-  notification['error']({
-    message: '温馨提示',
-    description: `批量添加${parameter.value.title}失败，请您重新上传！`,
-  });
-};
-/* 上传成功提示 */
-const excelUploadSuccess = (): void => {
-  notification['success']({
-    message: '温馨提示',
-    description: `批量添加${parameter.value.title}成功！`,
-  });
-};
+  };
 
-defineExpose({
-  acceptParams,
-});
+  const beforeExcelUpload = async (file: any, fileList: any) => {
+    const isExcel = parameter.value.fileType!.includes(file.type as File.ExcelMimeType);
+    const fileSize = file.size / 1024 / 1024 < parameter.value.fileSize!;
+    const fileAmount = fileList.length >= 2 ? false : true;
+
+    if (!isExcel) {
+      notification['warning']({
+        message: 'Notice',
+        description: 'Upload files can only be in xls / xlsx format!',
+        style: { borderRadius: '8px' },
+        duration: 3,
+      });
+    }
+
+    if (!fileSize) {
+      setTimeout(() => {
+        notification['warning']({
+          message: 'Notice',
+          description: `Upload file size cannot exceed ${parameter.value.fileSize}MB!`,
+          style: { borderRadius: '8px' },
+          duration: 3,
+        });
+      }, 0);
+    }
+
+    if (!fileAmount) {
+      if (limitMessage) {
+        notification['warning']({
+          message: 'Notice',
+          description: 'You can only upload one file at a time!',
+          style: { borderRadius: '8px' },
+          duration: 3,
+        });
+        limitMessage = false;
+        setTimeout(() => {
+          limitMessage = true;
+        }, 1000);
+      }
+    }
+
+    return isExcel && fileSize && fileAmount;
+  };
+
+  const handleChange = (info: UploadChangeParam) => {
+    const { status } = info.file;
+    if (status === 'done') {
+      excelUploadSuccess();
+    } else if (status === 'error') {
+      excelUploadError();
+    }
+  };
+
+  const excelUploadError = (): void => {
+    notification['error']({
+      message: 'Notice',
+      description: `Batch adding ${parameter.value.title} failed, please try uploading again!`,
+    });
+  };
+
+  const excelUploadSuccess = (): void => {
+    notification['success']({
+      message: 'Notice',
+      description: `Batch adding ${parameter.value.title} successful!`,
+    });
+  };
+
+  defineExpose({
+    acceptParams,
+  });
 </script>
 
 <style scoped lang="less">
-@import url('./index.less');
+  @import url('./index.less');
 </style>

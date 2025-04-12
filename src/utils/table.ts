@@ -1,11 +1,5 @@
-/**
- * 获取第一个表格的可视化高度
- * @param {number} extraHeight 额外的高度(表格底部的内容高度 Number类型,默认为54)
- * @param {reactRef} ref Table所在的组件的ref
- */
 export function getTableScroll({ extraHeight, ref, isSummary = false }: any = {}) {
   if (typeof extraHeight == 'undefined') {
-    //  默认底部分页32 + 边距20 + (52 会有滚动条，54 刚好，未清楚原因) + 总结栏(默认48)
     if (isSummary) {
       extraHeight = 54 + 48;
     } else {
@@ -18,15 +12,11 @@ export function getTableScroll({ extraHeight, ref, isSummary = false }: any = {}
   } else {
     tHeader = document.getElementsByClassName('ant-table-thead')[0];
   }
-  //表格内容距离顶部的距离
   let tHeaderBottom = 0;
   if (tHeader) {
     tHeaderBottom = tHeader.getBoundingClientRect().bottom;
   }
-  // 窗体高度-表格内容顶部的高度-表格内容底部的高度
-  // let height = document.body.clientHeight - tHeaderBottom - extraHeight
   let height = `calc(100vh - ${tHeaderBottom + extraHeight + 50}px)`;
-  // 空数据的时候表格高度保持不变,暂无数据提示文本图片居中
   if (ref && ref.current) {
     let placeholder = ref.current.getElementsByClassName('ant-table-placeholder')[0];
     if (placeholder) {
@@ -39,7 +29,6 @@ export function getTableScroll({ extraHeight, ref, isSummary = false }: any = {}
   return height;
 }
 
-/* 自定义列表获取相同项 */
 export const getJsonArrEqual = (arr1: any, arr2: any) => {
   let newArr: any[] = [],
     kvIndex: any = {};

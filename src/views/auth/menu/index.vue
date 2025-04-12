@@ -13,17 +13,17 @@
 </template>
 
 <script setup lang="ts" name="menuAuth">
-import { useRouter } from 'vue-router';
-import { LOGIN_URL } from '@/config';
-import { useUserStore } from '@/stores/modules/user';
+  import { useRouter } from 'vue-router';
+  import { LOGIN_URL } from '@/config';
+  import { useUserStore } from '@/stores/modules/user';
 
-const router = useRouter();
-const userStore = useUserStore();
+  const router = useRouter();
+  const userStore = useUserStore();
 
-const handleToLogin = () => {
-  userStore.setToken('');
-  router.push(LOGIN_URL);
-};
+  const handleToLogin = () => {
+    userStore.setToken('');
+    router.push(LOGIN_URL);
+  };
 </script>
 
 <style scoped lang="less"></style>

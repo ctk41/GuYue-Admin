@@ -26,14 +26,13 @@
 </template>
 
 <script setup lang="ts">
-import ContextMenu from '@/components/ContextMenu';
-import MenuContext from './components/rightMenu.vue';
+  import ContextMenu from '@/components/ContextMenu';
+  import MenuContext from './components/rightMenu.vue';
 
-// 右键菜单
-const showContextMenu = (e: MouseEvent, value: string) => {
-  e.preventDefault();
-  ContextMenu(e, value, MenuContext);
-};
+  const showContextMenu = (e: MouseEvent, value: string) => {
+    e.preventDefault();
+    ContextMenu(e, value, MenuContext);
+  };
 </script>
 
 <style scoped lang="less"></style>

@@ -25,30 +25,28 @@
 </template>
 
 <script setup lang="ts" name="Select">
-import { ref } from 'vue';
-import GRoleSelect from '@/components/GSelect/GRoleSelect.vue';
-import { message } from 'ant-design-vue';
+  import { ref } from 'vue';
+  import GRoleSelect from '@/components/GSelect/GRoleSelect.vue';
+  import { message } from 'ant-design-vue';
 
-/* select Value */
-const roleValue = ref('3');
-/* select组件实例 */
-const RoleSelectRef = ref();
+  const roleValue = ref('3');
+  const RoleSelectRef = ref();
 
-const handleChange = (value: string) => {
-  message.success(`selected ${value}`);
-};
-/* 获取数据源 */
-const getDataOrigin = () => {
-  message.success(`Data: ${JSON.stringify(RoleSelectRef.value!.getData())}`);
-};
-/* 获取选中值 */
-const getValue = () => {
-  message.success(`Value: ${roleValue.value}`);
-};
-/* 设置选中值 */
-const setSelectValue = () => {
-  roleValue.value = '1';
-};
+  const handleChange = (value: string) => {
+    message.success(`selected ${value}`);
+  };
+
+  const getDataOrigin = () => {
+    message.success(`Data: ${JSON.stringify(RoleSelectRef.value!.getData())}`);
+  };
+
+  const getValue = () => {
+    message.success(`Value: ${roleValue.value}`);
+  };
+
+  const setSelectValue = () => {
+    roleValue.value = '1';
+  };
 </script>
 
 <style scoped lang="less"></style>

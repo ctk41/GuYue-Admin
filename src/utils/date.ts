@@ -1,6 +1,5 @@
 import moment from 'moment';
 
-//日期类型
 export const DATE_CATEGORY = {
   today: 'today',
   yesterday: 'yesterday',
@@ -10,19 +9,15 @@ export const DATE_CATEGORY = {
   lastMonth: 'lastMonth',
 };
 
-//开始时间
 let start = '';
-//结束时间
 let end = '';
 
 export let handleDateType = {
-  //今日
   today: (() => {
     start = moment().format('YYYY-MM-DD');
     end = moment().format('YYYY-MM-DD');
     return { start, end };
   })(),
-  //昨日
   yesterday: (() => {
     start = moment().subtract(1, 'days').format('YYYY-MM-DD');
     end = moment().subtract(1, 'days').format('YYYY-MM-DD');

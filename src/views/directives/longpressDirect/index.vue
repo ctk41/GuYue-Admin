@@ -6,11 +6,11 @@
 </template>
 
 <script setup lang="ts" name="longpressDirect">
-import { message } from 'ant-design-vue';
+  import { message } from 'ant-design-vue';
 
-const longpress = () => {
-  message.success('长按事件触发成功 🍒🍒🍒');
-};
+  const longpress = () => {
+    message.success('长按事件触发成功 🍒🍒🍒');
+  };
 </script>
 
 <style scoped lang="less"></style>

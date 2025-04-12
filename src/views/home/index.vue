@@ -43,7 +43,6 @@
     </a-row>
   </a-card>
   <a-row :gutter="6">
-    <!-- 工程项目 -->
     <a-col :span="12">
       <a-card title="工程项目" class="mb-6">
         <template #extra><a href="https://gitee.com/Y_lao/GuYue-Admin" target="_blank">更多项目</a></template>
@@ -65,7 +64,6 @@
           </div>
         </a-card-grid>
       </a-card>
-      <!-- 动态 -->
       <a-card title="动态" :bordered="false" :bodyStyle="{ paddingTop: 0, paddingBottom: 0 }">
         <a-list item-layout="horizontal" :data-source="dynamicData">
           <template #renderItem="{ item }">
@@ -87,7 +85,6 @@
         </a-list>
       </a-card>
     </a-col>
-    <!-- 快捷操作 -->
     <a-col :span="12">
       <a-card title="快捷操作" class="mb-6">
         <a-card-grid
@@ -104,7 +101,6 @@
           </div>
         </a-card-grid>
       </a-card>
-      <!-- Gitee / GitHub 访问量占比 -->
       <a-card title="Gitee / GitHub 访问量占比" :bodyStyle="{ height: '350px' }">
         <div class="book-echarts">
           <Pie ref="pieRef" />
@@ -115,199 +111,196 @@
 </template>
 
 <script setup lang="ts" name="home">
-import { ref, computed, onMounted } from 'vue';
-import { useUserStore } from '@/stores/modules/user';
-import { getTimeState } from '@/utils/util';
-import { useRouter } from 'vue-router';
-import Pie from './components/pie.vue';
-import CountUp from '@/components/CountUp/index.vue';
+  import { ref, computed, onMounted } from 'vue';
+  import { useUserStore } from '@/stores/modules/user';
+  import { getTimeState } from '@/utils/util';
+  import { useRouter } from 'vue-router';
+  import Pie from './components/pie.vue';
+  import CountUp from '@/components/CountUp/index.vue';
 
-interface DataItem {
-  id: string;
-  title: string;
-  link: string;
-  desc: string;
-}
+  interface DataItem {
+    id: string;
+    title: string;
+    link: string;
+    desc: string;
+  }
 
-interface ShortcutKeyItem {
-  icon: string;
-  title: string;
-  color: string;
-  onClick: () => void;
-}
+  interface ShortcutKeyItem {
+    icon: string;
+    title: string;
+    color: string;
+    onClick: () => void;
+  }
 
-interface ShortcutKeyItem {
-  icon: string;
-  title: string;
-  color: string;
-  onClick: () => void;
-}
+  interface ShortcutKeyItem {
+    icon: string;
+    title: string;
+    color: string;
+    onClick: () => void;
+  }
 
-interface ProjectItem {
-  icon: string;
-  title: string;
-  desc: string;
-  author: string;
-  color: string;
-  link?: string;
-}
+  interface ProjectItem {
+    icon: string;
+    title: string;
+    desc: string;
+    author: string;
+    color: string;
+    link?: string;
+  }
 
-const router = useRouter();
-const userStore = useUserStore();
-const username = computed(() => userStore.userInfo.name);
-const time = computed(() => getTimeState());
-const pieRef = ref();
+  const router = useRouter();
+  const userStore = useUserStore();
+  const username = computed(() => userStore.userInfo.name);
+  const time = computed(() => getTimeState());
+  const pieRef = ref();
 
-/* 快捷键 */
-const shortcutKeyList: ShortcutKeyItem[] = [
-  {
-    icon: 'FundViewOutlined',
-    title: '主控台',
-    color: '#68c755',
-    onClick: () => {
-      router.push('/dashboard/dataVisualize');
+  const shortcutKeyList: ShortcutKeyItem[] = [
+    {
+      icon: 'FundViewOutlined',
+      title: '主控台',
+      color: '#68c755',
+      onClick: () => {
+        router.push('/dashboard/dataVisualize');
+      },
     },
-  },
-  {
-    icon: 'FileTextOutlined',
-    title: '表单',
-    color: '#fab558',
-    onClick: () => {
-      router.push('/form/basicForm');
+    {
+      icon: 'FileTextOutlined',
+      title: '表单',
+      color: '#fab558',
+      onClick: () => {
+        router.push('/form/basicForm');
+      },
     },
-  },
-  {
-    icon: 'LockOutlined',
-    title: '权限管理',
-    color: '#3da2ff',
-    onClick: () => {
-      router.push('/auth/menu');
+    {
+      icon: 'LockOutlined',
+      title: '权限管理',
+      color: '#3da2ff',
+      onClick: () => {
+        router.push('/auth/menu');
+      },
     },
-  },
-  {
-    icon: 'BarChartOutlined',
-    title: '数据大屏',
-    color: '#f387aa',
-    onClick: () => {
-      router.push('/dataScreen');
+    {
+      icon: 'BarChartOutlined',
+      title: '数据大屏',
+      color: '#f387aa',
+      onClick: () => {
+        router.push('/dataScreen');
+      },
     },
-  },
-  {
-    icon: 'ProjectOutlined',
-    title: '关于项目',
-    color: '#814dd6',
-    onClick: () => {
-      router.push('/about/index');
+    {
+      icon: 'ProjectOutlined',
+      title: '关于项目',
+      color: '#814dd6',
+      onClick: () => {
+        router.push('/about/index');
+      },
     },
-  },
-  {
-    icon: 'MailOutlined',
-    title: '消息',
-    color: '#5cdbd3',
-    onClick: () => {},
-  },
-];
-/* 动态 */
-const dynamicData: DataItem[] = [
-  {
-    id: '1',
-    title: 'vue3自定义右键菜单组件',
-    link: 'https://juejin.cn/post/7212456518331088952',
-    desc: '2023-05-06 22:06:16',
-  },
-  {
-    id: '2',
-    title: '工程化之Axios + Ts的二次封装',
-    link: 'https://juejin.cn/post/7175174061515866149',
-    desc: '2023-05-04 12:17:16',
-  },
-  {
-    id: '3',
-    title: 'less 定义全局样式',
-    link: 'https://juejin.cn/post/7167007858394546213',
-    desc: '2023-05-03 21:37:16',
-  },
-  {
-    id: '4',
-    title: 'vue3.2 - nextTick的使用',
-    link: 'https://juejin.cn/post/7039135899904393229',
-    desc: '2023-05-02 15:27:16',
-  },
-  {
-    id: '5',
-    title: 'Vue版的 hooks 库 --- VueUse',
-    link: 'https://juejin.cn/post/7055248384713555999',
-    desc: '2023-05-01 05:30:16',
-  },
-  {
-    id: '6',
-    title: 'Vue3自定义指令-10个常见的实用指令',
-    link: 'https://juejin.cn/post/6968996649515515917',
-    desc: '2023-05-01 16:17:16',
-  },
-];
-/* 工程项目 */
-const projectData: ProjectItem[] = [
-  {
-    icon: 'GithubOutlined',
-    title: 'Github',
-    desc: '是一个面向开源及私有软件项目的托管平台。',
-    author: '开源君 2021-07-04',
-    color: '#333639',
-    link: 'https://github.com/',
-  },
-  {
-    icon: 'GitlabOutlined',
-    title: 'Gitlab',
-    desc: '基于git的项目管理软件。',
-    author: '学不动也要学 2021-07-04',
-    color: '#47ba86',
-    link: 'https://gitlab.com/users/sign_in',
-  },
-  {
-    icon: 'Html5Outlined',
-    title: 'HTML5',
-    desc: 'HTML5是互联网的下一代标准。',
-    author: '撸码也是一种艺术 2021-04-01',
-    color: '#e4502c',
-    link: 'https://www.w3school.com.cn/html/html5_intro.asp',
-  },
-  {
-    icon: 'TaobaoCircleOutlined',
-    title: '淘宝网',
-    desc: '只有你想不到，没有你淘不到。',
-    author: '购物天地 2021-04-01',
-    color: '#42b983',
-    link: 'https://www.taobao.com/',
-  },
-  {
-    icon: 'AlipayCircleOutlined',
-    title: '支付宝',
-    desc: '致力于为企业和个人提供，简单、安全、快速、支付解决方案。',
-    author: '支付工具 2021-07-04',
-    color: '#61dafb',
-    link: 'https://auth.alipay.com/login/index.htm',
-  },
-  {
-    icon: 'WeiboOutlined',
-    title: '微博',
-    desc: '分享简短实时信息的社交平台。',
-    author: '分享君 2021-07-04',
-    color: '#dd0031',
-    link: 'https://weibo.com/newlogin?url=https%3A%2F%2Fweibo.com%2F',
-  },
-];
+    {
+      icon: 'MailOutlined',
+      title: '消息',
+      color: '#5cdbd3',
+      onClick: () => {},
+    },
+  ];
+  const dynamicData: DataItem[] = [
+    {
+      id: '1',
+      title: 'vue3自定义右键菜单组件',
+      link: 'https://juejin.cn/post/7212456518331088952',
+      desc: '2023-05-06 22:06:16',
+    },
+    {
+      id: '2',
+      title: '工程化之Axios + Ts的二次封装',
+      link: 'https://juejin.cn/post/7175174061515866149',
+      desc: '2023-05-04 12:17:16',
+    },
+    {
+      id: '3',
+      title: 'less 定义全局样式',
+      link: 'https://juejin.cn/post/7167007858394546213',
+      desc: '2023-05-03 21:37:16',
+    },
+    {
+      id: '4',
+      title: 'vue3.2 - nextTick的使用',
+      link: 'https://juejin.cn/post/7039135899904393229',
+      desc: '2023-05-02 15:27:16',
+    },
+    {
+      id: '5',
+      title: 'Vue版的 hooks 库 --- VueUse',
+      link: 'https://juejin.cn/post/7055248384713555999',
+      desc: '2023-05-01 05:30:16',
+    },
+    {
+      id: '6',
+      title: 'Vue3自定义指令-10个常见的实用指令',
+      link: 'https://juejin.cn/post/6968996649515515917',
+      desc: '2023-05-01 16:17:16',
+    },
+  ];
+  const projectData: ProjectItem[] = [
+    {
+      icon: 'GithubOutlined',
+      title: 'Github',
+      desc: '是一个面向开源及私有软件项目的托管平台。',
+      author: '开源君 2021-07-04',
+      color: '#333639',
+      link: 'https://github.com/',
+    },
+    {
+      icon: 'GitlabOutlined',
+      title: 'Gitlab',
+      desc: '基于git的项目管理软件。',
+      author: '学不动也要学 2021-07-04',
+      color: '#47ba86',
+      link: 'https://gitlab.com/users/sign_in',
+    },
+    {
+      icon: 'Html5Outlined',
+      title: 'HTML5',
+      desc: 'HTML5是互联网的下一代标准。',
+      author: '撸码也是一种艺术 2021-04-01',
+      color: '#e4502c',
+      link: 'https://www.w3school.com.cn/html/html5_intro.asp',
+    },
+    {
+      icon: 'TaobaoCircleOutlined',
+      title: '淘宝网',
+      desc: '只有你想不到，没有你淘不到。',
+      author: '购物天地 2021-04-01',
+      color: '#42b983',
+      link: 'https://www.taobao.com/',
+    },
+    {
+      icon: 'AlipayCircleOutlined',
+      title: '支付宝',
+      desc: '致力于为企业和个人提供，简单、安全、快速、支付解决方案。',
+      author: '支付工具 2021-07-04',
+      color: '#61dafb',
+      link: 'https://auth.alipay.com/login/index.htm',
+    },
+    {
+      icon: 'WeiboOutlined',
+      title: '微博',
+      desc: '分享简短实时信息的社交平台。',
+      author: '分享君 2021-07-04',
+      color: '#dd0031',
+      link: 'https://weibo.com/newlogin?url=https%3A%2F%2Fweibo.com%2F',
+    },
+  ];
 
-const pieData = [
-  { value: 4524, name: 'Gitee 访问量' },
-  { value: 8616, name: 'GitHub 访问量' },
-];
+  const pieData = [
+    { value: 4524, name: 'Gitee 访问量' },
+    { value: 8616, name: 'GitHub 访问量' },
+  ];
 
-onMounted(() => {
-  pieRef.value.initChart(pieData);
-});
+  onMounted(() => {
+    pieRef.value.initChart(pieData);
+  });
 </script>
 
 <style scoped lang="less">
-@import url('./index.less');
+  @import url('./index.less');
 </style>

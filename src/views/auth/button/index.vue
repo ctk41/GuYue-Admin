@@ -19,7 +19,6 @@
       <a-button v-if="BUTTONS.export">
         <template #icon> <vertical-align-bottom-outlined /> </template>导出数据
       </a-button>
-      <!-- 测试无权限 -->
       <a-button type="primary" v-if="BUTTONS.batchAdd">
         <template #icon> <plus-circle-outlined /> </template>批量添加
       </a-button>
@@ -43,7 +42,6 @@
       <a-button v-auth="'export'">
         <template #icon> <vertical-align-bottom-outlined /> </template>导出数据
       </a-button>
-      <!-- 测试无权限 -->
       <a-button type="primary" v-auth="'batchAdd'">
         <template #icon> <plus-circle-outlined /> </template>批量添加
       </a-button>
@@ -65,7 +63,6 @@
       <a-button v-auth="['add', 'edit', 'delete', 'import', 'export']">
         <template #icon> <vertical-align-bottom-outlined /> </template>导出数据
       </a-button>
-      <!-- 测试无权限 -->
       <a-button type="primary" v-auth="['add', 'edit', 'delete', 'import', 'export', 'batchAdd']">
         <template #icon> <plus-circle-outlined /> </template>批量添加
       </a-button>
@@ -74,11 +71,11 @@
 </template>
 
 <script setup lang="ts" name="buttonAuth">
-import { useAuthButtons } from '@/hooks/useAuthButtons';
+  import { useAuthButtons } from '@/hooks/useAuthButtons';
 
-const { BUTTONS } = useAuthButtons();
+  const { BUTTONS } = useAuthButtons();
 </script>
 
 <style scoped lang="less">
-@import url('./index.less');
+  @import url('./index.less');
 </style>

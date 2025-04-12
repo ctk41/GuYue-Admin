@@ -14,31 +14,28 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue';
+  import { toRefs } from 'vue';
 
-interface Steps {
-  stepOne: any;
-  stepTwo: any;
-  stepThree: any;
-}
-/* 接口 */
-interface SubstepProps {
-  changeCurrent: (val: number) => void; // 改变当前步骤
-  next: (params: object) => void; // 下一步
-  prev: () => void; // 上一步
-  stepsData: Steps; //分步表单数据
-}
-/* props */
-const props = defineProps<SubstepProps>();
-/* stepsData */
-const { payment_account, credited_account, credited_name, transfer_amount } = toRefs(props.stepsData.stepOne);
+  interface Steps {
+    stepOne: any;
+    stepTwo: any;
+    stepThree: any;
+  }
+  interface SubstepProps {
+    changeCurrent: (val: number) => void;
+    next: (params: object) => void;
+    prev: () => void;
+    stepsData: Steps;
+  }
+  const props = defineProps<SubstepProps>();
+  const { payment_account, credited_account, credited_name, transfer_amount } = toRefs(props.stepsData.stepOne);
 </script>
 
 <style scoped lang="less">
-.bill-container {
-  padding-top: 10px;
-  padding-left: 20px;
-  margin: auto;
-  background-color: #fafafa;
-}
+  .bill-container {
+    padding-top: 10px;
+    padding-left: 20px;
+    margin: auto;
+    background-color: #fafafa;
+  }
 </style>

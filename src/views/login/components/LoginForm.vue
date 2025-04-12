@@ -52,7 +52,6 @@ const tabsStore = useTabsStore();
 const userStore = useUserStore();
 const keepAliveStore = useKeepAliveStore();
 
-// 定义 formRef (校验规则)
 const loginFormRef = ref<FormInstance>();
 const loginRules = reactive({
   username: [{ required: true, message: '请输入用户名!', trigger: 'blur' }],
@@ -67,18 +66,14 @@ const login = (formEl: FormInstance | undefined) => {
     if (!valid) return;
     loading.value = true;
     try {
-      // 1.执行登录接口
       const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
       userStore.setToken(data.access_token);
 
-      // 2.添加动态路由
       await initDynamicRouter();
 
-      // 3.清空 tabs、keepAlive 保留的数据
       tabsStore.closeMultipleTab();
       keepAliveStore.setKeepAliveName();
 
-      // 4.跳转到首页
       router.push(HOME_URL);
       notification['success']({
         message: getTimeState(),
@@ -92,14 +87,12 @@ const login = (formEl: FormInstance | undefined) => {
   });
 };
 
-// 清空登录表单
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.resetFields();
 };
 
 onMounted(() => {
-  // 监听enter事件（调用登录）
   document.onkeydown = (e: any) => {
     e = window.event || e;
     if (e.code === 'Enter' || e.code === 'enter' || e.code === 'NumpadEnter') {

@@ -9,16 +9,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-const modelVisible = ref(false);
+  const modelVisible = ref(false);
 
-// openModal
-const openModal = () => {
-  modelVisible.value = true;
-};
+  const openModal = () => {
+    modelVisible.value = true;
+  };
 
-defineExpose({ openModal });
+  defineExpose({ openModal });
 </script>
 
 <style scoped lang="less"></style>

@@ -14,20 +14,20 @@
 </template>
 
 <script setup lang="ts" name="pagination">
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-interface Pageable {
-  pageNum: number;
-  pageSize: number;
-  total: number;
-}
+  interface Pageable {
+    pageNum: number;
+    pageSize: number;
+    total: number;
+  }
 
-interface PaginationProps {
-  pageabale: Pageable;
-  handlePageAndPageSize: (page: number, pageSize: number) => void;
-}
+  interface PaginationProps {
+    pageabale: Pageable;
+    handlePageAndPageSize: (page: number, pageSize: number) => void;
+  }
 
-const pageSizeOptions = ref<string[]>(['10', '25', '50', '100']);
+  const pageSizeOptions = ref<string[]>(['10', '25', '50', '100']);
 
-defineProps<PaginationProps>();
+  defineProps<PaginationProps>();
 </script>

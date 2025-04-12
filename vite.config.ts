@@ -1,11 +1,9 @@
 import { defineConfig, loadEnv, ConfigEnv, UserConfig } from 'vite';
-import { createVitePlugins } from './build/plugins';
 import { resolve } from 'path';
 import { wrapperEnv } from './src/utils/getEnv';
 import { viteMockServe } from 'vite-plugin-mock';
 import pkg from './package.json';
 import dayjs from 'dayjs';
-import { createProxy } from './build/proxy';
 import unocss from '@unocss/vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
