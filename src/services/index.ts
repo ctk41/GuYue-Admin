@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosInstance, AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import { message } from 'ant-design-vue';
 import { ResultData } from '@/services/interface';
-import { ResultEnum } from '@/enums/httpEnum';
+import { ResponseEnum } from '@/enums/httpEnum';
 import { checkStatus } from './helper/checkStatus';
 import { useGlobalStore } from '@/stores/modules/global';
 import { LOGIN_URL } from '@/config';
@@ -15,7 +15,7 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 
 const config = {
   baseURL: import.meta.env.VITE_API_BACKEND_URL as string,
-  timeout: ResultEnum.TIMEOUT as number,
+  timeout: 10 * 1000,
   withCredentials: true,
 };
 
@@ -45,13 +45,15 @@ class RequestHttp {
         const globalState = useGlobalStore();
         const userStore = useUserStore();
         globalState.setGlobalState('loading', false);
-        if (data.code == ResultEnum.OVERDUE) {
+
+        if (data.code == ResponseEnum.UNAUTHORIZED) {
           message.error(data.msg);
           userStore.setToken('');
           router.replace(LOGIN_URL);
           return Promise.reject(data);
         }
-        if (data.code && data.code !== ResultEnum.SUCCESS) {
+
+        if (data.code && data.code !== ResponseEnum.SUCCESS) {
           message.error(data.msg);
           return Promise.reject(data);
         }

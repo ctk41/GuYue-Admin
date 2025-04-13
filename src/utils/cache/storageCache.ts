@@ -1,4 +1,3 @@
-import { isDevEnv } from '../getEnv';
 import { isObject, isNullOrUnDef } from '../is';
 import dayjs from 'dayjs';
 import type { Cache } from './type';
@@ -25,7 +24,7 @@ class WebStorage {
     expire?: number | null;
   }) {
     this.storage = storage;
-    this.hasEncrypt = isDevEnv() ? false : hasEncrypt;
+    this.hasEncrypt = hasEncrypt;
     this.KEY = key;
     this.expire = expire || null;
   }

@@ -46,7 +46,6 @@
   const activeMenu = ref<Array<string>>([]);
   const isCollapse = computed(() => globalStore.isCollapse);
   const menuList = computed(() => {
-    console.log('Menu List:', authStore.showMenuListGet);
     return authStore.showMenuListGet;
   });
   const theme = computed(() => {

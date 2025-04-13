@@ -6,7 +6,7 @@ const pinia = createPinia();
 
 pinia.use(piniaPluginPersistedstate);
 
-if (import.meta.env.DEV) {
+if (import.meta.env.VITE_APP_ENV === 'local') {
   pinia.use(
     createLogger({
       activate: true,

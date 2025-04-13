@@ -51,18 +51,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       port: viteEnv.VITE_PORT,
       open: viteEnv.VITE_OPEN,
       cors: true,
-      hmr: {
-        overlay: true,
-        protocol: 'ws',
-        host: 'localhost',
-        port: viteEnv.VITE_PORT,
-        timeout: 5000,
-      },
-      watch: {
-        usePolling: true,
-        interval: 100,
-        ignored: ['**/node_modules/**', '**/dist/**'],
-      },
       // proxy: createProxy(viteEnv.VITE_PROXY)
     },
     plugins: [
