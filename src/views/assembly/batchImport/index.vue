@@ -22,7 +22,7 @@
 
 <script setup lang="ts" name="batchImport">
   import { ref } from 'vue';
-  import { exportUserInfo, BatchAddUser } from '@/api/modules/user';
+  import { exportUserInfo, BatchAddUser } from '@/services/modules/user';
   import ImportExcel from '@/components/ImportExcel/index.vue';
 
   const importRef = ref();

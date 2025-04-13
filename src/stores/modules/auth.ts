@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { AuthState } from '@/stores/interface';
-import { getAuthButtonListApi } from '@/api/modules/login';
+import { getAuthButtonListApi } from '@/services/modules/login';
 import { getFlatArr, getShowMenuList, getAllBreadcrumbList } from '@/utils/util';
 import { staticMenu } from '@/routers/modules/staticMenu';
 

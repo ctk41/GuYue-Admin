@@ -34,11 +34,11 @@
 <script setup lang="ts">
   import { ref, reactive, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
-  import { Login } from '@/api/interface';
+  import { Login } from '@/services/interface';
   import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons-vue';
   import { notification } from 'ant-design-vue';
   import type { FormInstance } from 'ant-design-vue';
-  import { loginApi } from '@/api/modules/login';
+  import { loginApi } from '@/services/modules/login';
   import { useUserStore } from '@/stores/modules/user';
   import { useTabsStore } from '@/stores/modules/tabs';
   import { useKeepAliveStore } from '@/stores/modules/keepAlive';

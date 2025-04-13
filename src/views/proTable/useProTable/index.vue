@@ -108,7 +108,7 @@
 <script setup lang="tsx">
   import { ref, createVNode, watch } from 'vue';
   import { useRouter } from 'vue-router';
-  import { User } from '@/api/interface';
+  import { User } from '@/services/interface';
   import ProTable from '@/components/ProTable/index.vue';
   import type { TableColumnsType } from 'ant-design-vue';
   import ImportExcel from '@/components/ImportExcel/index.vue';
@@ -124,7 +124,7 @@
     deleteUser,
     resetUserPassWord,
     changeUserStatus,
-  } from '@/api/modules/user';
+  } from '@/services/modules/user';
   import TableFilter from '@/components/TableFilter/index.vue';
   import TablePreview from '@/components/TablePreview/index.vue';
   import CopyOptBtn from '@/components/CopyOptBtn/index.vue';

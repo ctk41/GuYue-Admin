@@ -12,12 +12,12 @@
 
 <script setup lang="ts">
   import { ref, watchEffect } from 'vue';
-  import { getRolesListApi } from '@/api/modules/role';
+  import { getRolesListApi } from '@/services/modules/role';
   import { createCacheStorage } from '@/utils/cache/storageCache';
   import { CacheConfig } from '@/utils/cache/config';
   import { message } from 'ant-design-vue';
   import type { SelectProps } from 'ant-design-vue';
-  import type { Role } from '@/api/interface/index';
+  import type { Role } from '@/services/interface/index';
 
   const props = withDefaults(
     defineProps<{

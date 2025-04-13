@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import { message } from 'ant-design-vue';
-import { ResultData } from '@/api/interface';
+import { ResultData } from '@/services/interface';
 import { ResultEnum } from '@/enums/httpEnum';
 import { checkStatus } from './helper/checkStatus';
 import { useGlobalStore } from '@/stores/modules/global';

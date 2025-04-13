@@ -1,5 +1,5 @@
-import { Role } from '@/api/interface/index';
-import http from '@/api';
+import { Role } from '@/services/interface/index';
+import http from '@/services';
 
 export const getRolesListApi = () => {
   return http.get<Role.RoleList[]>(`/basicRole/list`);

@@ -35,7 +35,7 @@
   import { ref, createVNode } from 'vue';
   import { useUserStore } from '@/stores/modules/user';
   import { LOGIN_URL } from '@/config';
-  import { logoutApi } from '@/api/modules/login';
+  import { logoutApi } from '@/services/modules/login';
   import { useRouter } from 'vue-router';
   import { Modal, message } from 'ant-design-vue';
   import { ExclamationCircleOutlined } from '@ant-design/icons-vue';

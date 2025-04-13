@@ -1,5 +1,5 @@
-import { ResPage, User } from '@/api/interface/index';
-import http from '@/api';
+import { ResPage, User } from '@/services/interface/index';
+import http from '@/services';
 
 export const getUserList = (params: User.ReqUserParams) => {
   return http.post<ResPage<User.ResUserList>>(`/user/list`, params);
