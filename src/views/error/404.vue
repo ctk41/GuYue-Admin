@@ -1,7 +1,6 @@
 <template>
   <div class="error-container">
     <div class="error-content">
-      <img src="@/assets/error/404.png" alt="404" class="error-image" />
       <h1 class="error-title">404</h1>
       <p class="error-message">Sorry, the page you visited does not exist.</p>
       <a-button type="primary" @click="$router.push('/')">Back Home</a-button>

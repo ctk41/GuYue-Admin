@@ -115,7 +115,20 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         output: {
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+          assetFileNames: ({ name }) => {
+            if (!name) return 'assets/[name]-[hash][extname]';
+
+            if (/\.(css|less|scss|sass|stylus)$/.test(name)) {
+              return 'assets/css/[name]-[hash][extname]';
+            }
+            if (/\.(png|jpe?g|gif|svg|webp|avif)$/.test(name)) {
+              return 'assets/images/[name]-[hash][extname]';
+            }
+            if (/\.(woff2?|eot|ttf|otf)$/.test(name)) {
+              return 'assets/fonts/[name]-[hash][extname]';
+            }
+            return 'assets/[ext]/[name]-[hash].[ext]';
+          },
           manualChunks: {
             'vue-vendor': ['vue', 'vue-router', 'pinia', 'vue-i18n'],
             'ant-design-vue': ['ant-design-vue', '@ant-design/icons-vue'],
