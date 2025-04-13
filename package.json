@@ -2,7 +2,6 @@
   "name": "vti-vue-admin",
   "private": true,
   "version": "1.0.1",
-  "type": "module",
   "description": "vti-vue-admin",
   "author": "chinh.duongvan@vti.com.vn",
   "license": "MIT",
