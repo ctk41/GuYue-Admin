@@ -11,6 +11,35 @@ export const staticMenu: Menu.MenuOptions[] = [
     },
   },
   {
+    path: '/dashboard',
+    name: 'dashboard',
+    redirect: '/dashboard/dataVisualize',
+    meta: {
+      icon: 'DashboardOutlined',
+      title: 'Dashboard',
+    },
+    children: [
+      {
+        path: '/dashboard/dataVisualize',
+        name: 'dataVisualize',
+        component: () => import('@/views/dashboard/dataVisualize/index.vue'),
+        meta: {
+          icon: 'FundViewOutlined',
+          title: 'Control Panel',
+        },
+      },
+      {
+        path: '/dashboard/embedded',
+        name: 'embedded',
+        component: () => import('@/views/dashboard/embedded/index.vue'),
+        meta: {
+          icon: 'chromeOutlined',
+          title: 'Embedded Pages',
+        },
+      },
+    ],
+  },
+  {
     path: '/proTable',
     name: 'proTable',
     redirect: '/proTable/useProTable',
@@ -39,35 +68,6 @@ export const staticMenu: Menu.MenuOptions[] = [
             },
           },
         ],
-      },
-    ],
-  },
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    redirect: '/dashboard/dataVisualize',
-    meta: {
-      icon: 'DashboardOutlined',
-      title: 'Dashboard',
-    },
-    children: [
-      {
-        path: '/dashboard/dataVisualize',
-        name: 'dataVisualize',
-        component: () => import('@/views/dashboard/dataVisualize/index.vue'),
-        meta: {
-          icon: 'FundViewOutlined',
-          title: 'Control Panel',
-        },
-      },
-      {
-        path: '/dashboard/embedded',
-        name: 'embedded',
-        component: () => import('@/views/dashboard/embedded/index.vue'),
-        meta: {
-          icon: 'chromeOutlined',
-          title: 'Embedded Pages',
-        },
       },
     ],
   },

@@ -13,8 +13,8 @@
     let option: echarts.EChartsOption = {
       color: ['#59A2FE', '#FFB717', '#FC8F6B', '#70E07B', '#FBDA3D', '#11E5F1', '#E3A0FF'],
       title: {
-        text: '访问来源',
-        subtext: '全站来源统计',
+        text: 'Traffic Sources',
+        subtext: 'Site-wide source statistics',
         left: 'center',
       },
       tooltip: {
@@ -22,16 +22,16 @@
         backgroundColor: '#ffffff',
         formatter: function (params: any) {
           let str =
-            '访问来源' +
+            'Traffic Source' +
             '</br>' +
             params.marker +
             '' +
             params.name +
             '</br>' +
-            '数量：' +
+            'Count: ' +
             params.data.value +
             '</br>' +
-            '占比：' +
+            'Percentage: ' +
             params.percent +
             '%';
           return str;
@@ -79,13 +79,13 @@
           },
 
           data: [
-            { value: 5920, name: '抖音' },
-            { value: 2640, name: '快手' },
-            { value: 2125, name: '微博' },
-            { value: 1925, name: '虎牙' },
-            { value: 1220, name: '斗鱼' },
-            { value: 635, name: '人民日报' },
-            { value: 4638, name: '微信' },
+            { value: 5920, name: 'TikTok' },
+            { value: 2640, name: 'Kuaishou' },
+            { value: 2125, name: 'Weibo' },
+            { value: 1925, name: 'Huya' },
+            { value: 1220, name: 'Douyu' },
+            { value: 635, name: "People's Daily" },
+            { value: 4638, name: 'WeChat' },
           ],
         },
       ],

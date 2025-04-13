@@ -24,7 +24,7 @@
       legend: {
         right: '6%',
         top: '8%',
-        data: ['当月销售额', '月均销售额'],
+        data: ['Current Month Sales', 'Average Monthly Sales'],
       },
       grid: {
         left: '3%',
@@ -36,12 +36,12 @@
         {
           type: 'category',
           boundaryGap: true,
-          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+          data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         },
       ],
       yAxis: [
         {
-          name: '单位：元',
+          name: 'Unit: Yuan',
           type: 'value',
           max: 1500,
           min: 0,
@@ -50,7 +50,7 @@
       ],
       series: [
         {
-          name: '月均销售额',
+          name: 'Average Monthly Sales',
           type: 'line',
           areaStyle: {
             color: '#77c9ff',
@@ -61,7 +61,7 @@
           data: [720, 832, 801, 934, 890, 930, 1260, 1176, 1232, 1261, 1304, 1353],
         },
         {
-          name: '当月销售额',
+          name: 'Current Month Sales',
           type: 'line',
           areaStyle: {
             color: '#78d8d8',

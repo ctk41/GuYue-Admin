@@ -27,14 +27,14 @@
   </a-row>
   <a-row :gutter="6" class="mb-6">
     <a-col :md="24" :xl="12">
-      <a-card title="访问量" :bordered="false" hoverable>
+      <a-card title="Visits" :bordered="false" hoverable>
         <a-skeleton :loading="loading" active>
           <PageView />
         </a-skeleton>
       </a-card>
     </a-col>
     <a-col :md="24" :xl="12">
-      <a-card title="区域排行" :bordered="false" hoverable>
+      <a-card title="Regional Ranking" :bordered="false" hoverable>
         <a-skeleton :loading="loading" active>
           <AreaRankingView />
         </a-skeleton>
@@ -43,14 +43,14 @@
   </a-row>
   <a-row :gutter="6" class="mb-6">
     <a-col :md="24" :xl="12">
-      <a-card title="销售额" :bordered="false" hoverable>
+      <a-card title="Sales" :bordered="false" hoverable>
         <a-skeleton :loading="loading" active>
           <SaleroomView />
         </a-skeleton>
       </a-card>
     </a-col>
     <a-col :md="24" :xl="12">
-      <a-card title="访问来源" :bordered="false" hoverable>
+      <a-card title="Traffic Sources" :bordered="false" hoverable>
         <a-skeleton :loading="loading" active>
           <AccessSourceView />
         </a-skeleton>
@@ -73,8 +73,8 @@
   const loading = ref(true);
   const statisticList = ref([
     {
-      title: '访问量',
-      period: '周',
+      title: 'Visits',
+      period: 'Week',
       value: 63089,
       change: '+31%',
       icon: 'visits',
@@ -82,8 +82,8 @@
       prefix: '',
     },
     {
-      title: '销售额',
-      period: '周',
+      title: 'Sales',
+      period: 'Week',
       value: 138826,
       change: '+23%',
       icon: 'sale',
@@ -91,8 +91,8 @@
       prefix: '￥',
     },
     {
-      title: '订单量',
-      period: '周',
+      title: 'Orders',
+      period: 'Week',
       value: 9500,
       change: '-20%',
       icon: 'order_count',
@@ -100,8 +100,8 @@
       prefix: '',
     },
     {
-      title: '成交额',
-      period: '月',
+      title: 'Transaction Amount',
+      period: 'Month',
       value: 396200,
       change: '-11%',
       icon: 'volume',

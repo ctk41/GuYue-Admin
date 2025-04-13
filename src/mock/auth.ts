@@ -7,7 +7,7 @@ export default [
     response: () => {
       return {
         code: 200,
-        msg: '成功',
+        msg: 'success',
         data: {
           authButton: ['add', 'edit', 'delete', 'import', 'export'],
           useProTable: ['add', 'batchAdd', 'export', 'batchDelete', 'status'],
@@ -24,7 +24,7 @@ export default [
         data: {
           access_token: 'bqddxxwqmfncffacvbpkuxvwvqrhln',
         },
-        msg: '成功',
+        msg: 'success',
       };
     },
   },
@@ -34,7 +34,7 @@ export default [
     response: () => {
       return {
         code: 200,
-        msg: '退出登录成功',
+        msg: 'success',
       };
     },
   },

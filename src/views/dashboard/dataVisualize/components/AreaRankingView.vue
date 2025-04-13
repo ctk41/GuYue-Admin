@@ -11,7 +11,18 @@
   const timeInter = ref<NodeJS.Timeout | null>(null);
   onMounted(() => {
     let myChart: echarts.ECharts = echarts.init(echartsRef.value as HTMLElement);
-    let nameList = ['广东省', '湖南省', '江西省', '广西省', '浙江省', '福建省', '湖北省', '重庆省', '云南省', '河南省'];
+    let nameList = [
+      'Guangdong Province',
+      'Hunan Province',
+      'Jiangxi Province',
+      'Guangxi Province',
+      'Zhejiang Province',
+      'Fujian Province',
+      'Hubei Province',
+      'Chongqing Province',
+      'Yunnan Province',
+      'Henan Province',
+    ];
     let valueList = [94, 92, 88, 77, 76, 65, 44, 43, 32, 21];
 
     const showNum = 7;
@@ -145,7 +156,7 @@
       ],
       series: [
         {
-          name: '转化率',
+          name: 'Conversion Rate',
           type: 'bar',
           id: 'bar',
           barWidth: 8,
@@ -157,7 +168,7 @@
           },
           label: {
             show: true,
-            formatter: '转化率：{c}%',
+            formatter: 'Conversion Rate: {c}%',
             color: 'rgba(0, 0, 0, 0.85)',
             fontFamily: 'HarmonyOS Sans-Medium',
             fontSize: 12,

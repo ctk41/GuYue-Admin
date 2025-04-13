@@ -8,8 +8,7 @@
       <Message id="message" />
       <Fullscreen id="fullscreen" />
     </div>
-    <!-- 使用者 -->
-    <span class="username">GuYue</span>
+    <span class="username">admin</span>
     <Avatar />
   </div>
 </template>
@@ -31,6 +30,7 @@
     justify-content: center;
     height: 100%;
     margin: 0 30px 0 0;
+
     .header-icon {
       display: flex;
       align-items: center;
