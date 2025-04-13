@@ -45,9 +45,11 @@
   const globalStore = useGlobalStore();
   const activeMenu = ref<Array<string>>([]);
   const isCollapse = computed(() => globalStore.isCollapse);
+
   const menuList = computed(() => {
     return authStore.showMenuListGet;
   });
+
   const theme = computed(() => {
     return globalStore.styleSetting === 'realDark' ? 'dark' : globalStore.styleSetting;
   });
